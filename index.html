@@ -2,392 +2,338 @@
 <meta name="description" content="Karriere- und Leadership-Coaching mit Sorniza Costoff in Berlin. Klarheit für deinen nächsten Karriereschritt.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Hanken+Grotesk:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap">
 <style>
-/* Layout: editorial single column on a cool "mist" ground, broken by full-bleed ink bands.
-   Motif: the concentric arcs of the logo, drawn as hairlines. One brand-gold accent, used sparingly. */
+/* Layout: split-plane composition. Ink (navy from the logo arcs) and mist (brand grey) planes
+   meet at hard edges; photos sit flush against them. The logo's concentric arcs are the only ornament.
+   Concept motion: "Klarheit" – the hero headline resolves from blur to sharp, once. */
 :root {
   color-scheme: light;
   --mist: #E3E7EA;        /* brand light grey */
-  --paper: #F1F3F4;       /* lifted ground */
-  --stone: #C0C5C8;       /* hero photo backdrop */
-  --ink: #142231;         /* deep navy taken from the logo's blue arcs */
-  --ink-2: #1E3044;
-  --ink-soft: #4A5865;
-  --line: #C9CFD4;
+  --paper: #F2F4F5;
+  --ink: #132130;         /* navy from the logo */
+  --ink-soft: #4B5966;
+  --line: #CDD3D8;
   --gold: #AD9358;        /* brand gold */
-  --gold-deep: #7E6A3E;   /* gold for text on light grounds (contrast) */
-  --gold-light: #CDB27A;  /* gold on ink */
-  --on-ink: #E9ECEE;
-  --on-ink-soft: #A9B4BE;
+  --gold-deep: #7C683D;
+  --gold-light: #D1B67E;
+  --on-ink: #EEF0F2;
+  --on-ink-soft: #A7B2BC;
+  --on-ink-line: rgba(238,240,242,.18);
 
   --f-display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
   --f-body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-hand: "Mrs Saint Delafield", "Snell Roundhand", cursive;
 
   --s-xs: .8125rem;
   --s-sm: .9375rem;
   --s-md: 1.0625rem;
-  --s-lg: 1.375rem;
-  --s-xl: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
-  --s-2xl: clamp(2.5rem, 1.4rem + 4.6vw, 5.25rem);
+  --s-lg: 1.3125rem;
+  --s-xl: clamp(2rem, 1.3rem + 2.6vw, 3.25rem);
+  --s-2xl: clamp(2.75rem, 1.4rem + 5vw, 6rem);
 
-  --gutter: clamp(16px, 4vw, 56px);
-  --max: 1240px;
+  --gutter: clamp(16px, 4.5vw, 64px);
+  --max: 1280px;
   --ease: cubic-bezier(.2,.7,.2,1);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--f-body);
-  font-size: var(--s-md);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-img { max-width: 100%; display: block; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: var(--s-md); line-height: 1.65; -webkit-font-smoothing: antialiased; }
 main { overflow-x: clip; }
+img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
-h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: 1.05; margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: 1.04; margin: 0; text-wrap: balance; letter-spacing: -.012em; }
 p { margin: 0; }
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-
 .wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
-.eyebrow {
-  font-size: var(--s-xs); font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--gold-deep); display: flex; align-items: center; gap: .75rem;
-}
-.eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
-.ink .eyebrow { color: var(--gold-light); }
-em.g { font-style: italic; color: var(--gold-deep); }
-.ink em.g { color: var(--gold-light); }
+.g { font-style: italic; color: var(--gold-deep); }
+.ink { background: var(--ink); color: var(--on-ink); }
+.ink .g { color: var(--gold-light); }
+.kicker { font-family: var(--f-display); font-style: italic; font-size: 1.15rem; color: var(--gold-deep); }
+.ink .kicker { color: var(--gold-light); }
 
 /* Buttons */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
-  font: 600 var(--s-sm)/1 var(--f-body); letter-spacing: .02em;
-  padding: 1.05rem 1.6rem; border: 1px solid transparent; border-radius: 2px;
-  text-decoration: none; cursor: pointer; transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
-}
-.btn-primary { background: var(--ink); color: var(--paper); }
-.btn-primary:hover { background: var(--gold-deep); }
-.btn-ghost { border-color: var(--ink); color: var(--ink); background: transparent; }
-.btn-ghost:hover { background: var(--ink); color: var(--paper); }
-.ink .btn-primary { background: var(--gold); color: var(--ink); }
-.ink .btn-primary:hover { background: var(--gold-light); }
-.btn .arrow { transition: transform .25s var(--ease); }
-.btn:hover .arrow { transform: translateX(3px); }
+.btn { display: inline-flex; align-items: center; gap: .7rem; font: 600 var(--s-sm)/1 var(--f-body); letter-spacing: .02em; padding: 1.1rem 1.6rem; border: 1px solid transparent; border-radius: 0; text-decoration: none; cursor: pointer; transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease); }
+.btn .arrow { display: inline-block; transition: transform .3s var(--ease); }
+.btn:hover .arrow { transform: translateX(4px); }
+.btn-solid { background: var(--ink); color: var(--paper); }
+.btn-solid:hover { background: var(--gold-deep); }
+.btn-gold { background: var(--gold); color: var(--ink); }
+.btn-gold:hover { background: var(--gold-light); }
+.btn-line { color: var(--on-ink); border-color: var(--on-ink-line); background: transparent; }
+.btn-line:hover { border-color: var(--gold-light); color: var(--gold-light); }
+.tlink { font-weight: 600; font-size: var(--s-sm); text-decoration: none; background: linear-gradient(var(--gold), var(--gold)) 0 100% / 100% 1px no-repeat; padding-bottom: 3px; transition: background-size .35s var(--ease); }
+.tlink:hover { background-size: 0 1px; background-position: 100% 100%; }
+
+/* Concept bar */
+.concept { background: var(--mist); color: var(--ink-soft); font-size: var(--s-xs); text-align: center; padding: .5rem 16px; }
+.concept b { color: var(--ink); font-weight: 600; }
 
 /* Header */
-.top {
-  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40;
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid transparent; transition: border-color .3s;
-}
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
 .top.scrolled { border-bottom-color: var(--line); }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-block: .9rem; }
-.top .logo img { height: 52px; width: auto; }
-.top nav { display: flex; align-items: center; gap: 2rem; font-size: var(--s-sm); }
-.top nav a:not(.btn) { text-decoration: none; color: var(--ink-soft); transition: color .2s; }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-block: .8rem; }
+.top .logo img { height: 50px; width: auto; }
+.top nav { display: flex; align-items: center; gap: 2.2rem; font-size: var(--s-sm); }
+.top nav a:not(.btn) { text-decoration: none; color: var(--ink-soft); position: relative; }
+.top nav a:not(.btn)::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: right; transition: transform .35s var(--ease); }
 .top nav a:not(.btn):hover { color: var(--ink); }
-.top .btn { padding: .8rem 1.15rem; }
-@media (max-width: 940px) { .top nav a:not(.btn) { display: none; } }
-@media (max-width: 520px) { .top .logo img { height: 40px; } .top .btn { font-size: var(--s-xs); padding: .7rem .9rem; } }
+.top nav a:not(.btn):hover::after { transform: scaleX(1); transform-origin: left; }
+.top .btn { padding: .85rem 1.2rem; }
+@media (max-width: 960px) { .top nav a:not(.btn) { display: none; } }
+@media (max-width: 520px) { .top .logo img { height: 38px; } .top .btn { font-size: var(--s-xs); padding: .7rem .9rem; } }
 
-/* Hero */
-.hero { position: relative; background: var(--stone); overflow: hidden; }
-.hero-img { position: absolute; inset: 0; }
-.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 78% 30%; }
-.hero-arcs { position: absolute; left: -12%; top: 50%; translate: 0 -50%; width: min(78vw, 900px); pointer-events: none; }
-.hero .wrap { position: relative; padding-block: clamp(4rem, 9vw, 8.5rem) clamp(3.5rem, 7vw, 6.5rem); }
-.hero-copy { max-width: 36rem; display: grid; gap: 1.6rem; }
-.hero h1 { font-size: var(--s-2xl); }
-.hero h1 em { font-style: italic; color: var(--gold-deep); }
-.hero .lead { font-size: var(--s-lg); line-height: 1.45; color: var(--ink-2); max-width: 30rem; }
-.hero-ctas { display: flex; flex-wrap: wrap; gap: .75rem; padding-top: .4rem; }
-.hero .meta { font-size: var(--s-xs); color: var(--ink-soft); }
-@media (max-width: 760px) {
-  .hero-img { position: relative; height: 62vw; min-height: 260px; order: 2; }
-  .hero-img img { object-position: 82% 20%; }
-  .hero { display: flex; flex-direction: column; background: var(--paper); }
-  .hero .wrap { order: 1; padding-block: 3rem 2.5rem; }
-  .hero-arcs { display: none; }
+/* HERO: ink plane + photo plane, text never sits on the photo */
+.hero { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); min-height: min(86vh, 820px); }
+.hero-plane { position: relative; display: grid; align-content: center; padding: clamp(3.5rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem) clamp(3rem, 6vw, 5rem) max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter))); overflow: hidden; }
+.hero-plane svg { position: absolute; right: -30%; top: 50%; translate: 0 -50%; height: 135%; width: auto; pointer-events: none; }
+.hero-plane .arc.b { stroke: var(--on-ink); opacity: .1; }
+.hero-copy { position: relative; display: grid; gap: 2rem; max-width: 40rem; }
+.hero h1 { font-size: var(--s-2xl); color: var(--on-ink); }
+.hero h1 .line { display: inline-block; }
+.hero h1 em { font-style: italic; color: var(--gold-light); }
+.hero .lead { font-size: var(--s-lg); line-height: 1.5; color: var(--on-ink-soft); max-width: 31rem; }
+.hero .lead b { color: var(--on-ink); font-weight: 500; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
+.hero-photo { position: relative; margin: 0; background: #C0C5C8; overflow: hidden; }
+.hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 84% 28%; }
+.hero-photo figcaption { position: absolute; left: 1.3rem; bottom: 1.6rem; writing-mode: vertical-rl; transform: rotate(180deg); font-size: var(--s-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--ink); font-weight: 600; }
+.hero-photo figcaption span { color: var(--gold-deep); }
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; min-height: 0; }
+  .hero-plane { padding: 3.2rem var(--gutter) 3rem; }
+  .hero-plane svg { right: -60%; height: 120%; opacity: .45; }
+  .hero-photo { aspect-ratio: 4 / 3; max-width: 100%; }
+  .hero-photo img { object-position: 86% 22%; }
 }
-
 .arc { fill: none; stroke: var(--gold); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.arc.b { stroke: var(--ink); opacity: .22; }
+
 @media (prefers-reduced-motion: no-preference) {
-  .hero-arcs .arc { stroke-dasharray: 1600; stroke-dashoffset: 1600; animation: draw 2.4s var(--ease) forwards; }
-  .hero-arcs .arc:nth-child(2) { animation-delay: .15s; }
-  .hero-arcs .arc:nth-child(3) { animation-delay: .3s; }
-  .hero-arcs .arc:nth-child(4) { animation-delay: .45s; }
-  .hero-copy > * { animation: rise .9s var(--ease) both; }
-  .hero-copy > *:nth-child(2) { animation-delay: .08s; }
-  .hero-copy > *:nth-child(3) { animation-delay: .16s; }
-  .hero-copy > *:nth-child(4) { animation-delay: .24s; }
-  .hero-copy > *:nth-child(5) { animation-delay: .32s; }
+  .hero h1 .line { animation: clarity 1.6s var(--ease) both; }
+  .hero h1 .line:nth-child(2) { animation-delay: .18s; }
+  .hero h1 .line:nth-child(3) { animation-delay: .36s; }
+  .hero .lead, .hero-ctas { animation: rise 1s var(--ease) .7s both; }
+  .hero-plane .arc { stroke-dasharray: 2400; stroke-dashoffset: 2400; animation: draw 3s var(--ease) .2s forwards; }
+  .hero-plane .arc:nth-child(2) { animation-delay: .4s; }
+  .hero-plane .arc:nth-child(3) { animation-delay: .6s; }
+  .hero-photo img { animation: settle 2.2s var(--ease) both; }
 }
+@keyframes clarity { from { filter: blur(14px); opacity: .25; letter-spacing: .02em; } to { filter: blur(0); opacity: 1; letter-spacing: -.012em; } }
+@keyframes rise { from { opacity: .001; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @keyframes draw { to { stroke-dashoffset: 0; } }
-@keyframes rise { from { opacity: .001; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes settle { from { transform: scale(1.06); filter: blur(6px); } to { transform: none; filter: none; } }
 
-/* Proof strip */
-.proof { border-bottom: 1px solid var(--line); }
-.proof ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
-.proof li { padding: 1.4rem 1.25rem 1.4rem 0; font-size: var(--s-sm); color: var(--ink-soft); display: grid; gap: .15rem; }
-.proof li + li { padding-left: 1.25rem; border-left: 1px solid var(--line); }
-.proof b { font-family: var(--f-display); font-weight: 500; font-size: 1.35rem; color: var(--ink); }
-@media (max-width: 760px) {
-  .proof ul { grid-template-columns: 1fr 1fr; }
-  .proof li { padding: 1.1rem .75rem 1.1rem 0; }
-  .proof li + li { padding-left: 0; border-left: 0; }
-  .proof li:nth-child(even) { padding-left: .9rem; border-left: 1px solid var(--line); }
-  .proof li:nth-child(n+3) { border-top: 1px solid var(--line); }
-}
+/* Section scaffolding */
+section { scroll-margin-top: 84px; }
+.sec { padding-block: clamp(5rem, 11vw, 9rem); }
+.head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 1.5rem 4rem; align-items: end; margin-bottom: clamp(2.5rem, 6vw, 4.5rem); }
+.head h2 { font-size: var(--s-xl); margin-top: .6rem; }
+.head p { color: var(--ink-soft); max-width: 30rem; }
+@media (max-width: 860px) { .head { grid-template-columns: 1fr; } }
 
-/* Sections */
-section { scroll-margin-top: 80px; }
-.sec { padding-block: clamp(4.5rem, 10vw, 8.5rem); }
-.sec-head { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 2rem 4rem; align-items: end; margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
-.sec-head h2 { font-size: var(--s-xl); margin-top: 1.1rem; }
-.sec-head p { color: var(--ink-soft); max-width: 34rem; }
-@media (max-width: 860px) { .sec-head { grid-template-columns: 1fr; } }
+/* WENDEPUNKTE: the curve is the tab bar */
+.selector { position: relative; display: grid; grid-template-columns: 26fr 26fr 26fr 22fr; padding-top: 180px; margin-bottom: 2.8rem; }
+.selector svg.curve { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 170px; overflow: visible; pointer-events: none; }
+.selector svg.curve path { fill: none; stroke: var(--line); stroke-width: 1.25; }
+.selector svg.curve path#curve-on { stroke: var(--gold); }
+.stop { position: relative; background: none; border: 0; padding: 0 1.6rem 0 0; cursor: pointer; text-align: left; font: inherit; color: inherit; display: grid; gap: .45rem; align-content: start; }
+.stop .pin { position: absolute; left: -9px; width: 18px; height: 18px; border-radius: 50%; background: var(--paper); border: 1.5px solid var(--gold); transition: background .3s, transform .3s var(--ease), box-shadow .3s; }
+.stop::before { content: ""; position: absolute; left: 0; bottom: calc(100% + 10px); width: 1px; background: var(--line); transition: background .3s; }
+.stop:nth-of-type(1) .pin { top: calc(27px - 180px - 9px); }   .stop:nth-of-type(1)::before { height: 128px; }
+.stop:nth-of-type(2) .pin { top: calc(121px - 180px - 9px); }  .stop:nth-of-type(2)::before { height: 34px; }
+.stop:nth-of-type(3) .pin { top: calc(159px - 180px - 9px); }  .stop:nth-of-type(3)::before { height: 0; }
+.stop:nth-of-type(4) .pin { top: calc(61px - 180px - 9px); }   .stop:nth-of-type(4)::before { height: 94px; }
+.stop .when { font-size: var(--s-xs); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); transition: color .3s; }
+.stop .say { font-family: var(--f-display); font-size: 1.25rem; line-height: 1.28; color: var(--ink-soft); transition: color .3s; }
+.stop:hover .say, .stop:hover .when { color: var(--ink); }
+.stop:hover .pin { transform: scale(1.15); }
+.stop[aria-selected="true"] .pin { background: var(--gold); transform: scale(1.3); box-shadow: 0 0 0 7px color-mix(in srgb, var(--gold) 18%, transparent); }
+.stop[aria-selected="true"]::before { background: var(--gold); }
+.stop[aria-selected="true"] .when { color: var(--gold-deep); }
+.stop[aria-selected="true"] .say { color: var(--ink); }
 
-.ink { background: var(--ink); color: var(--on-ink); }
-.ink .sec-head p, .ink .muted { color: var(--on-ink-soft); }
+.panels { border-top: 1px solid var(--line); min-height: 30rem; }
+.panel { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 2rem 5rem; padding-top: clamp(2.5rem, 5vw, 4rem); }
+.panel:not(.on) { display: none; }
+.panel.on .p-anim { animation: rise .7s var(--ease) both; }
+.panel.on .p-anim:nth-child(2) { animation-delay: .08s; }
+.p-title { display: grid; gap: 1.2rem; align-content: start; position: relative; isolation: isolate; }
+.p-title .sub { font-size: var(--s-xs); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--gold-deep); }
+.p-title h3 { font-size: clamp(2.3rem, 1.5rem + 2.8vw, 3.8rem); }
+.p-title .voice { font-family: var(--f-display); font-style: italic; font-size: var(--s-lg); line-height: 1.4; color: var(--ink-soft); border-left: 1px solid var(--gold); padding-left: 1.1rem; max-width: 24rem; }
+.p-body { display: grid; gap: 1.8rem; align-content: start; min-width: 0; }
+.p-body > p:first-child { font-size: 1.125rem; line-height: 1.75; max-width: 40rem; }
+.p-body > p:first-child::first-letter { font-family: var(--f-display); float: left; font-size: 4.3rem; line-height: .82; padding: .35rem .6rem 0 0; color: var(--gold-deep); }
+.p-note { font-size: var(--s-sm); color: var(--ink-soft); max-width: 36rem; }
+.p-cta { display: flex; flex-wrap: wrap; gap: 1.6rem; align-items: center; }
 
-/* Career line */
-.line-wrap { position: relative; }
-.career-line { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
-.career-line svg.path { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 80px; overflow: visible; pointer-events: none; }
-.career-line svg.path path { fill: none; stroke: var(--gold); stroke-width: 1.25; vector-effect: non-scaling-stroke; }
-.moment {
-  position: relative; padding: 0 1.4rem 0 0; text-decoration: none; display: grid; gap: .7rem; align-content: start;
-}
-.moment .dot { width: 15px; height: 15px; border-radius: 50%; background: var(--paper); border: 1.5px solid var(--gold); margin-bottom: 1.2rem; transition: background .25s, transform .25s var(--ease); }
-.moment:nth-child(2) .dot { margin-top: 44px; }
-.moment:nth-child(3) .dot { margin-top: 62px; }
-.moment:nth-child(4) .dot { margin-top: 18px; }
-.moment:nth-child(5) .dot { margin-top: 0; }
-.moment .when { font-size: var(--s-xs); letter-spacing: .14em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; }
-.moment h3 { font-size: 1.6rem; line-height: 1.15; }
-.moment p { font-size: var(--s-sm); color: var(--ink-soft); }
-.moment .to { font-size: var(--s-sm); font-weight: 600; margin-top: .3rem; display: inline-flex; gap: .4rem; }
-.moment:hover .dot { background: var(--gold); transform: scale(1.25); }
-.moment:hover .to { color: var(--gold-deep); }
+/* process track inside Career Decision (a real sequence) */
+.track { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding-top: 1.6rem; margin-top: .4rem; }
+.track::before, .track::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); }
+.track::after { background: var(--gold); transform-origin: left; transform: scaleX(0); transition: transform 1.6s var(--ease) .2s; }
+.panel.on .track::after { transform: scaleX(1); }
+.track span { position: relative; font-size: var(--s-sm); font-weight: 600; line-height: 1.35; padding-right: .8rem; }
+.track span::before { content: ""; position: absolute; left: 0; top: calc(-1.6rem - 4px); width: 9px; height: 9px; border-radius: 50%; background: var(--paper); border: 1px solid var(--gold); }
+.track span i { display: block; font-style: normal; font-weight: 400; color: var(--ink-soft); font-size: var(--s-xs); }
+.big100 { position: absolute; right: -1rem; top: -2.5rem; font-family: var(--f-display); font-size: clamp(7rem, 5rem + 8vw, 13rem); line-height: .8; color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--gold) 32%, transparent); pointer-events: none; z-index: -1; }
+
 @media (max-width: 860px) {
-  .career-line { grid-template-columns: 1fr; gap: 2.2rem; padding-left: 2rem; border-left: 1px solid var(--gold); margin-left: 7px; }
-  .career-line svg.path { display: none; }
-  .moment .dot { position: absolute; left: calc(-2rem - 8px); top: .2rem; margin: 0 !important; }
+  .selector { display: none; }
+  .panels { border-top: 0; min-height: 0; }
+  .panel, .panel:not(.on) { display: grid; grid-template-columns: 1fr; gap: 1.6rem; padding-block: 2.6rem; border-top: 1px solid var(--line); }
+  .panel .p-anim { animation: none !important; }
+  .track { grid-template-columns: 1fr; gap: 1rem; padding: 0 0 0 1.4rem; }
+  .track::before, .track::after { right: auto; bottom: 0; width: 1px; height: auto; }
+  .track::after { transform: none; }
+  .track span::before { left: calc(-1.4rem - 4px); top: .3rem; }
+  .big100 { font-size: 7rem; top: 0; }
 }
 
-/* Offers */
-.offers { display: grid; gap: 0; border-top: 1px solid var(--line); }
-.offer { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 2rem 4rem; padding-block: clamp(2.5rem, 5vw, 4rem); border-bottom: 1px solid var(--line); scroll-margin-top: 80px; }
-.offer-name { display: grid; gap: 1rem; align-content: start; }
-.offer-name .tag { font-size: var(--s-xs); letter-spacing: .14em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; }
-.offer-name h3 { font-size: clamp(2rem, 1.4rem + 2vw, 3rem); }
-.offer-name .for { color: var(--ink-soft); font-size: var(--s-sm); max-width: 22rem; }
-.offer-body { display: grid; gap: 1.6rem; min-width: 0; }
-.offer-body .promise { font-family: var(--f-display); font-size: var(--s-lg); line-height: 1.35; font-style: italic; }
-.steps { list-style: none; margin: 0; padding: 0; counter-reset: s; display: grid; }
-.steps li { counter-increment: s; display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1rem; padding-block: .95rem; border-top: 1px solid var(--line); }
-.steps li::before { content: counter(s, decimal-leading-zero); font: 500 var(--s-sm)/1.6 var(--f-body); color: var(--gold-deep); font-variant-numeric: tabular-nums; }
-.steps b { font-weight: 600; }
-.steps span { display: block; color: var(--ink-soft); font-size: var(--s-sm); }
-.chips { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; margin: 0; padding: 0; }
-.chips li { font-size: var(--s-sm); padding: .45rem .85rem; border: 1px solid var(--line); border-radius: 100px; background: var(--paper); }
-.option { font-size: var(--s-sm); color: var(--ink-soft); padding: 1rem 1.2rem; background: var(--mist); border-left: 2px solid var(--gold); }
-.option b { color: var(--ink); }
-.offer-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem; }
-.textlink { font-weight: 600; font-size: var(--s-sm); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
-.textlink:hover { color: var(--gold-deep); }
-@media (max-width: 860px) { .offer { grid-template-columns: 1fr; } }
+/* HOGAN */
+.hogan { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: 3rem 5rem; align-items: center; }
+.hogan-copy { display: grid; gap: 1.5rem; }
+.hogan-copy h2 { font-size: var(--s-xl); }
+.hogan-copy p { color: var(--on-ink-soft); max-width: 32rem; }
+.hogan-copy p b { color: var(--on-ink); font-weight: 500; }
+.venn { width: 100%; max-width: 520px; justify-self: center; overflow: visible; }
+.venn .c { fill: rgba(173,147,88,.06); stroke: var(--gold-light); stroke-width: 1; transition: fill .4s; }
+.venn g:hover .c { fill: rgba(173,147,88,.18); }
+.venn .ab { font-family: var(--f-display); font-size: 30px; fill: var(--gold-light); }
+.venn .lb { font-family: var(--f-body); font-size: 13px; fill: var(--on-ink-soft); }
+.venn .core { fill: var(--gold); }
+.venn .cl { font-family: var(--f-display); font-style: italic; font-size: 15px; fill: var(--on-ink); }
+@media (max-width: 860px) { .hogan { grid-template-columns: 1fr; } }
 
-/* Hogan band */
-.hogan-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid rgba(233,236,238,.18); }
-.hogan-grid article { padding: 2rem 2rem 2rem 0; display: grid; gap: .8rem; align-content: start; }
-.hogan-grid article + article { padding-left: 2rem; border-left: 1px solid rgba(233,236,238,.18); }
-.hogan-grid .abbr { font-family: var(--f-display); font-size: 3.4rem; line-height: 1; color: var(--gold-light); }
-.hogan-grid h3 { font-family: var(--f-body); font-size: var(--s-md); font-weight: 600; letter-spacing: .01em; }
-.hogan-grid p { color: var(--on-ink-soft); font-size: var(--s-sm); }
-.hogan-grid .q { color: var(--on-ink); font-style: italic; font-family: var(--f-display); font-size: 1.1rem; }
-@media (max-width: 860px) {
-  .hogan-grid { grid-template-columns: 1fr; }
-  .hogan-grid article, .hogan-grid article + article { padding: 1.8rem 0; border-left: 0; border-top: 1px solid rgba(233,236,238,.18); }
-  .hogan-grid article:first-child { border-top: 0; }
-}
-
-/* Self test */
+/* SELBSTTEST */
 .test { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 2.5rem 5rem; align-items: start; }
-.test-intro { display: grid; gap: 1.3rem; position: sticky; top: 110px; }
+.test-intro { display: grid; gap: 1.4rem; position: sticky; top: 120px; }
 .test-intro h2 { font-size: var(--s-xl); }
-.test-intro p { color: var(--ink-soft); }
-.test-intro .closeup { height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 30%; width: 100%; margin-top: .8rem; filter: saturate(.85); }
-.quiz { background: var(--paper); border: 1px solid var(--line); padding: clamp(1.5rem, 4vw, 3rem); min-height: 31rem; display: grid; align-content: start; gap: 1.5rem; min-width: 0; }
-.quiz-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: var(--s-xs); color: var(--ink-soft); letter-spacing: .1em; text-transform: uppercase; font-weight: 600; }
-.bar { height: 2px; background: var(--line); position: relative; }
-.bar i { position: absolute; inset: 0 auto 0 0; background: var(--gold); transition: width .5s var(--ease); }
-.quiz h3 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem); line-height: 1.2; }
-.answers { display: grid; gap: .6rem; }
-.answer {
-  text-align: left; font: 500 var(--s-md)/1.4 var(--f-body); color: var(--ink);
-  background: transparent; border: 1px solid var(--line); border-radius: 2px; padding: 1rem 1.2rem;
-  cursor: pointer; display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: .8rem; align-items: start;
-  transition: border-color .2s, background .2s;
-}
-.answer .k { font-size: var(--s-xs); font-weight: 600; color: var(--gold-deep); padding-top: .2rem; }
-.answer:hover { border-color: var(--ink); }
-.answer[aria-pressed="true"] { border-color: var(--gold); background: var(--mist); }
-.quiz-nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.test-intro p { color: var(--ink-soft); max-width: 26rem; }
+.quiz { background: var(--paper); padding: clamp(1.6rem, 4vw, 3.2rem); min-height: 30rem; display: grid; align-content: start; gap: 1.6rem; min-width: 0; box-shadow: 14px 14px 0 -1px var(--mist), 14px 14px 0 0 var(--gold); }
+.quiz-top { display: flex; justify-content: space-between; gap: 1rem; font-size: var(--s-xs); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.quiz-top b { font-weight: 600; color: var(--ink); }
+.bar { height: 1px; background: var(--line); position: relative; }
+.bar i { position: absolute; inset: -1px auto -1px 0; background: var(--gold); transition: width .6s var(--ease); }
+.quiz h3 { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.3rem); line-height: 1.18; }
+.answers { display: grid; border-top: 1px solid var(--line); }
+.answer { text-align: left; font: 400 var(--s-md)/1.45 var(--f-body); color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--line); padding: 1.05rem 2.4rem 1.05rem 0; cursor: pointer; position: relative; transition: padding .3s var(--ease), color .2s; }
+.answer::after { content: "→"; position: absolute; right: .4rem; top: 50%; translate: 0 -50%; opacity: 0; color: var(--gold-deep); transition: opacity .25s, right .3s var(--ease); }
+.answer:hover { padding-left: .8rem; }
+.answer:hover::after { opacity: 1; right: 0; }
+.answer[aria-pressed="true"] { padding-left: .8rem; color: var(--gold-deep); }
+.quiz-nav { display: flex; justify-content: space-between; gap: 1rem; }
 .linkbtn { background: none; border: 0; padding: 0; font: 600 var(--s-sm)/1 var(--f-body); color: var(--ink-soft); cursor: pointer; }
 .linkbtn:hover { color: var(--ink); }
 .linkbtn[disabled] { opacity: .35; cursor: default; }
 .result { display: grid; gap: 1.2rem; }
-.result .tag { font-size: var(--s-xs); letter-spacing: .14em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; }
-.result h3 { font-size: clamp(2rem, 1.5rem + 2vw, 3rem); }
+.result h3 { font-size: clamp(2.2rem, 1.6rem + 2vw, 3.2rem); }
 .result p { color: var(--ink-soft); }
-.result .mix { display: grid; gap: .55rem; margin-top: .4rem; }
-.result .mix div { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) 2.5rem; gap: .8rem; align-items: center; font-size: var(--s-sm); }
-.result .mix .track { height: 4px; background: var(--mist); position: relative; }
-.result .mix .track i { position: absolute; inset: 0 auto 0 0; background: var(--ink); }
-.result .mix div.top-pick .track i { background: var(--gold); }
-.result .mix span:last-child { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-soft); }
-.result .actions { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; margin-top: .6rem; }
-@media (max-width: 860px) { .test { grid-template-columns: 1fr; } .test-intro { position: static; } .test-intro .closeup { display: none; } .quiz { min-height: 0; } }
-@media (max-width: 480px) { .result .mix div { grid-template-columns: minmax(0, 1fr) 4.5rem 2.2rem; } }
+.result .fit b { color: var(--ink); font-weight: 600; }
+.result .actions { display: flex; flex-wrap: wrap; gap: 1.4rem; align-items: center; margin-top: .4rem; }
+@media (max-width: 860px) { .test { grid-template-columns: 1fr; } .test-intro { position: static; } .quiz { min-height: 0; box-shadow: 8px 8px 0 -1px var(--mist), 8px 8px 0 0 var(--gold); } }
 
-/* About */
-.about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 3rem 5rem; align-items: center; }
-.about-img { position: relative; }
-.about-img img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; }
-.about-img svg { position: absolute; right: -18%; bottom: -10%; width: 70%; pointer-events: none; }
-.about-copy { display: grid; gap: 1.4rem; }
+/* STIMMEN, staggered like a magazine spread */
+.voices { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); row-gap: clamp(3rem, 6vw, 5rem); }
+.q { margin: 0; display: grid; gap: 1.2rem; }
+.q blockquote { margin: 0; font-family: var(--f-display); color: var(--on-ink); line-height: 1.3; }
+.q figcaption { font-size: var(--s-sm); color: var(--on-ink-soft); display: flex; gap: .8rem; align-items: center; }
+.q figcaption::before { content: ""; width: 32px; height: 1px; background: var(--gold-light); }
+.q figcaption b { color: var(--on-ink); font-weight: 600; }
+.q1 { grid-column: 1 / span 9; }
+.q1 blockquote { font-size: clamp(1.8rem, 1.2rem + 2.4vw, 3.1rem); }
+.q1 blockquote::before { content: "\201E"; display: block; font-size: 1.6em; line-height: .5; color: var(--gold-light); }
+.q2 { grid-column: 7 / span 6; }
+.q3 { grid-column: 2 / span 6; }
+.q2 blockquote, .q3 blockquote { font-size: clamp(1.3rem, 1.1rem + .8vw, 1.75rem); font-style: italic; }
+@media (max-width: 860px) { .q1, .q2, .q3 { grid-column: 1 / -1; } }
+
+/* ÜBER SORNIZA */
+.about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3rem 6rem; align-items: center; }
+.about-fig { position: relative; margin: 0 1.6rem 1.6rem 0; }
+.about-fig::before { content: ""; position: absolute; inset: 1.6rem -1.6rem -1.6rem 1.6rem; border: 1px solid var(--gold); pointer-events: none; }
+.about-fig img { position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; }
+.about-copy { display: grid; gap: 1.5rem; }
 .about-copy h2 { font-size: var(--s-xl); }
-.about-copy p { color: var(--ink-soft); max-width: 34rem; }
-.about-copy blockquote { margin: .6rem 0; font-family: var(--f-display); font-style: italic; font-size: var(--s-lg); line-height: 1.4; color: var(--ink); padding-left: 1.2rem; border-left: 1px solid var(--gold); max-width: 32rem; }
-.values { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; list-style: none; margin: .4rem 0 0; padding: 1.2rem 0 0; border-top: 1px solid var(--line); }
-.values li { font-family: var(--f-display); font-size: 1.25rem; }
-.values li::after { content: "·"; color: var(--gold); margin-left: 1.6rem; }
-.values li:last-child::after { content: none; }
-.sig { font-size: var(--s-sm); color: var(--ink-soft); }
-.sig b { color: var(--ink); font-weight: 600; display: block; font-size: var(--s-md); }
-@media (max-width: 860px) { .about { grid-template-columns: 1fr; } .about-img { max-width: 30rem; } .about-img svg { right: -6%; } }
+.about-copy p { color: var(--ink-soft); max-width: 36rem; }
+.about-copy p b { color: var(--ink); font-weight: 500; }
+.about-copy .pull { font-family: var(--f-display); font-size: var(--s-lg); line-height: 1.45; color: var(--ink); font-style: italic; max-width: 32rem; }
+.sign { display: grid; gap: .1rem; margin-top: .4rem; }
+.sign .hand { font-family: var(--f-hand); font-size: 3.4rem; line-height: 1; color: var(--gold-deep); }
+.sign small { font-size: var(--s-xs); color: var(--ink-soft); letter-spacing: .04em; }
+@media (max-width: 860px) { .about { grid-template-columns: 1fr; } .about-fig { max-width: 26rem; } }
 
-/* Voices */
-.voices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
-.voice { padding: 0 2rem 0 0; display: grid; gap: 1.4rem; align-content: space-between; margin: 0; }
-.voice + .voice { padding-left: 2rem; border-left: 1px solid rgba(233,236,238,.18); }
-.voice blockquote { margin: 0; font-family: var(--f-display); font-size: 1.3rem; line-height: 1.45; color: var(--on-ink); }
-.voice blockquote::before { content: "\201E"; display: block; font-size: 3.5rem; line-height: .6; color: var(--gold-light); margin-bottom: .6rem; }
-.voice figcaption { font-size: var(--s-sm); color: var(--on-ink-soft); }
-.voice figcaption b { color: var(--on-ink); font-weight: 600; display: block; }
-@media (max-width: 860px) {
-  .voices { grid-template-columns: 1fr; gap: 2.5rem; }
-  .voice, .voice + .voice { padding: 2.5rem 0 0; border-left: 0; border-top: 1px solid rgba(233,236,238,.18); }
-  .voice:first-child { border-top: 0; padding-top: 0; }
-}
-
-/* Process + contact */
-.contact { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 3rem 5rem; align-items: start; }
-.contact-intro { display: grid; gap: 1.4rem; }
-.contact-intro h2 { font-size: var(--s-xl); }
-.contact-intro > p { color: var(--ink-soft); }
-.flow { list-style: none; margin: .6rem 0 0; padding: 0; display: grid; }
-.flow li { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: 1rem; padding-block: 1.1rem; border-top: 1px solid var(--line); }
-.flow li:last-child { border-bottom: 1px solid var(--line); }
-.flow .n { font-family: var(--f-display); font-size: 1.6rem; line-height: 1; color: var(--gold-deep); }
-.flow b { display: block; font-weight: 600; }
-.flow span { color: var(--ink-soft); font-size: var(--s-sm); }
-.direct { font-size: var(--s-sm); color: var(--ink-soft); display: grid; gap: .35rem; }
-.direct a { font-weight: 600; color: var(--ink); }
-
-form.req { background: var(--paper); border: 1px solid var(--line); padding: clamp(1.5rem, 4vw, 2.75rem); display: grid; gap: 1.2rem; min-width: 0; }
-form.req h3 { font-size: 1.8rem; }
-.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+/* ANFRAGE */
+.contact { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3rem 5rem; align-items: start; }
+.contact-intro { display: grid; gap: 1.5rem; }
+.contact-intro h2 { font-size: var(--s-2xl); }
+.contact-intro p { color: var(--on-ink-soft); max-width: 26rem; font-size: var(--s-lg); line-height: 1.5; }
+.contact-intro .alt { font-size: var(--s-sm); color: var(--on-ink-soft); display: grid; gap: .6rem; padding-top: 1.4rem; border-top: 1px solid var(--on-ink-line); }
+.contact-intro .alt a { color: var(--on-ink); }
+.contact-intro .alt .mail { color: var(--on-ink); font-weight: 600; user-select: all; }
+form.req { background: var(--paper); color: var(--ink); padding: clamp(1.6rem, 4vw, 3rem); display: grid; gap: 1.4rem; min-width: 0; }
+form.req h3 { font-size: 1.9rem; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
 @media (max-width: 560px) { .row2 { grid-template-columns: 1fr; } }
-.field { display: grid; gap: .4rem; min-width: 0; }
-.field label { font-size: var(--s-xs); letter-spacing: .1em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); }
-.field input, .field select, .field textarea {
-  font: 400 var(--s-md)/1.4 var(--f-body); color: var(--ink); background: transparent;
-  border: 0; border-bottom: 1px solid var(--ink-soft); border-radius: 0; padding: .6rem 0; width: 100%;
-  transition: border-color .2s;
-}
+.field { display: grid; gap: .3rem; min-width: 0; }
+.field label { font-size: var(--s-xs); font-weight: 600; color: var(--ink-soft); letter-spacing: .04em; }
+.field input, .field select, .field textarea { font: 400 var(--s-md)/1.4 var(--f-body); color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--ink-soft); border-radius: 0; padding: .6rem 0; width: 100%; }
 .field textarea { resize: vertical; min-height: 6.5rem; }
 .field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%), linear-gradient(135deg, var(--ink) 50%, transparent 50%); background-position: calc(100% - 10px) 55%, calc(100% - 5px) 55%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 1.6rem; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-bottom-color: var(--gold); box-shadow: 0 1px 0 var(--gold); }
-.hint { font-size: var(--s-xs); color: var(--gold-deep); font-weight: 600; }
+.hint { font-family: var(--f-display); font-style: italic; color: var(--gold-deep); }
 .consent { display: grid; grid-template-columns: 1.2rem minmax(0, 1fr); gap: .7rem; font-size: var(--s-xs); color: var(--ink-soft); align-items: start; }
 .consent input { margin-top: .2rem; accent-color: var(--ink); }
-.form-foot { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
+.form-foot { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; }
 .form-foot small { font-size: var(--s-xs); color: var(--ink-soft); }
-.sent { display: grid; gap: .8rem; padding: 1.2rem 1.3rem; background: var(--mist); border-left: 2px solid var(--gold); font-size: var(--s-sm); }
-.sent b { font-size: var(--s-md); }
+.sent { padding: 1.1rem 1.2rem; background: var(--mist); border-left: 2px solid var(--gold); font-size: var(--s-sm); color: var(--ink-soft); }
+.sent b { color: var(--ink); display: block; margin-bottom: .3rem; }
 @media (max-width: 860px) { .contact { grid-template-columns: 1fr; } }
 
 /* FAQ */
-.faq { max-width: 52rem; }
+.faq-wrap { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 2rem 5rem; }
+.faq-wrap h2 { font-size: var(--s-xl); margin-top: .6rem; }
 .faq details { border-top: 1px solid var(--line); }
 .faq details:last-child { border-bottom: 1px solid var(--line); }
 .faq summary { list-style: none; cursor: pointer; padding: 1.4rem 0; display: flex; justify-content: space-between; gap: 1.5rem; font-family: var(--f-display); font-size: 1.35rem; line-height: 1.3; }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; font-family: var(--f-body); font-weight: 400; color: var(--gold-deep); font-size: 1.5rem; line-height: 1; transition: transform .3s var(--ease); }
+.faq summary::after { content: "+"; font-family: var(--f-body); color: var(--gold-deep); font-size: 1.5rem; line-height: 1; transition: transform .3s var(--ease); }
 .faq details[open] summary::after { transform: rotate(45deg); }
-.faq details p { padding: 0 0 1.5rem; color: var(--ink-soft); max-width: 44rem; }
-
-/* Closing band */
-.closing { position: relative; overflow: hidden; }
-.closing .wrap { position: relative; display: grid; gap: 1.6rem; justify-items: start; padding-block: clamp(4.5rem, 10vw, 8rem); }
-.closing h2 { font-size: var(--s-2xl); max-width: 16ch; }
-.closing p { color: var(--on-ink-soft); max-width: 32rem; font-size: var(--s-lg); line-height: 1.45; }
-.closing svg { position: absolute; right: -10%; top: 50%; translate: 0 -50%; width: min(70vw, 760px); pointer-events: none; }
-.closing .arc.b { stroke: var(--on-ink); opacity: .12; }
+.faq details p { padding: 0 0 1.5rem; color: var(--ink-soft); max-width: 40rem; }
+@media (max-width: 860px) { .faq-wrap { grid-template-columns: 1fr; } }
 
 /* Footer */
-footer { background: var(--ink); color: var(--on-ink-soft); font-size: var(--s-sm); border-top: 1px solid rgba(233,236,238,.12); }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; justify-content: space-between; align-items: center; padding-block: 2.2rem calc(2.2rem + 64px); }
-footer .logo-plate { background: var(--paper); padding: .55rem .8rem; border-radius: 2px; display: inline-block; }
-footer .logo-plate img { height: 30px; width: auto; }
-footer nav { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; }
-footer a { color: var(--on-ink); text-decoration: none; }
-footer a:hover { color: var(--gold-light); }
-@media (min-width: 761px) { footer .wrap { padding-block: 2.2rem; } }
+footer { background: var(--paper); border-top: 1px solid var(--line); font-size: var(--s-sm); color: var(--ink-soft); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; justify-content: space-between; align-items: center; padding-block: 2rem calc(2rem + 70px); }
+footer img { height: 40px; width: auto; }
+footer nav { display: flex; flex-wrap: wrap; gap: .6rem 1.8rem; }
+footer a { text-decoration: none; color: var(--ink); }
+footer a:hover { color: var(--gold-deep); }
+@media (min-width: 761px) { footer .wrap { padding-block: 2rem; } }
 
 /* Mobile sticky CTA */
 .mcta { display: none; }
 @media (max-width: 760px) {
-  .mcta {
-    display: flex; gap: .5rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
-    padding: .7rem 16px calc(.7rem + env(safe-area-inset-bottom, 0px));
-    background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    border-top: 1px solid var(--line); transform: translateY(110%); transition: transform .35s var(--ease);
-  }
+  .mcta { display: flex; gap: .5rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: .7rem 16px calc(.7rem + env(safe-area-inset-bottom, 0px)); transform: translateY(110%); transition: transform .4s var(--ease); }
   .mcta.show { transform: none; }
-  .mcta .btn { flex: 1; padding: .95rem .8rem; }
+  .mcta .btn { flex: 1; justify-content: center; padding: .95rem .8rem; }
 }
 
-/* Concept note */
-.concept { background: var(--mist); color: var(--ink-soft); font-size: var(--s-xs); text-align: center; padding: .55rem 16px; letter-spacing: .02em; }
-.concept b { color: var(--ink); font-weight: 600; }
-
-.reveal { transition: opacity .8s var(--ease), transform .8s var(--ease); }
-.reveal.pre { opacity: .001; transform: translateY(18px); }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal.pre { opacity: 1; transform: none; } * { transition-duration: .01ms !important; } }
+.reveal { transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.reveal.pre { opacity: .001; transform: translateY(22px); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal.pre { opacity: 1; transform: none; } *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; } }
 </style>
 
-<div class="concept"><b>Konzeptentwurf</b> · Onepager für die Abstimmung am 8. Oktober · Texte und Paketnamen sind Vorschläge</div>
+<div class="concept"><b>Konzeptentwurf</b> · Onepager zur Abstimmung am 8. Oktober · Texte und Paketnamen sind Vorschläge</div>
 
 <header class="top" id="top">
   <div class="wrap">
     <a class="logo" href="#start" aria-label="Costoff Clarity &amp; Change, zum Anfang"><img src="assets/logo.png" alt="Costoff Clarity &amp; Change" width="556" height="180"></a>
     <nav aria-label="Hauptnavigation">
-      <a href="#wo-stehst-du">Wo stehst du?</a>
-      <a href="#angebote">Begleitung</a>
+      <a href="#wege">Begleitung</a>
       <a href="#selbsttest">Selbsttest</a>
       <a href="#sorniza">Über Sorniza</a>
-      <a class="btn btn-primary" href="#anfrage">Erstgespräch anfragen</a>
+      <a class="btn btn-solid" href="#anfrage">Erstgespräch anfragen</a>
     </nav>
   </div>
 </header>
@@ -395,180 +341,106 @@ footer a:hover { color: var(--gold-light); }
 <main id="start">
 
 <!-- HERO -->
-<section class="hero" aria-labelledby="h-hero">
-  <div class="hero-img"><img src="assets/hero.jpg" alt="Sorniza Costoff, Karriere- und Leadership-Coach in Berlin" width="2200" height="1185" fetchpriority="high"></div>
-  <svg class="hero-arcs" viewBox="0 0 900 900" aria-hidden="true">
-    <path class="arc" d="M620 90 A380 380 0 1 0 620 810"/>
-    <path class="arc b" d="M600 150 A320 320 0 1 0 600 750"/>
-    <path class="arc" d="M580 210 A262 262 0 1 0 580 690"/>
-    <path class="arc b" d="M560 270 A205 205 0 1 0 560 630"/>
-  </svg>
-  <div class="wrap">
+<section class="hero ink" aria-labelledby="h-hero">
+  <div class="hero-plane">
+    <svg viewBox="0 0 900 900" aria-hidden="true">
+      <path class="arc" d="M640 60 A400 400 0 1 0 640 840"/>
+      <path class="arc b" d="M615 130 A330 330 0 1 0 615 770"/>
+      <path class="arc" d="M590 200 A262 262 0 1 0 590 700"/>
+    </svg>
     <div class="hero-copy">
-      <p class="eyebrow">Karriere- &amp; Leadership-Coaching · Berlin</p>
-      <h1 id="h-hero">Dein nächster Schritt verdient eine <em>klare</em> Entscheidung.</h1>
-      <p class="lead">Für Fach- und Führungskräfte, die beruflich an einem Wendepunkt stehen und ihn fundiert gestalten wollen. Mit psychologischer Diagnostik, ehrlichem Sparring und einem Plan, der zu dir passt.</p>
+      <h1 id="h-hero"><span class="line">Dein nächster Schritt</span> <span class="line">verdient eine</span> <span class="line"><em>klare</em> Entscheidung.</span></h1>
+      <p class="lead">Für Fach- und Führungskräfte an einem beruflichen Wendepunkt. <b>Psychologisch fundiert, ehrlich im Feedback</b> und mit einem Plan, der wirklich zu dir passt.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="#anfrage">Unverbindliches Erstgespräch <span class="arrow" aria-hidden="true">→</span></a>
-        <a class="btn btn-ghost" href="#selbsttest">Selbsttest · 2 Minuten</a>
+        <a class="btn btn-gold" href="#anfrage">Unverbindliches Erstgespräch <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-line" href="#selbsttest">Welcher Weg passt zu mir?</a>
       </div>
-      <p class="meta">30 Minuten Kennenlernen · unverbindlich · direkt mit Sorniza</p>
     </div>
   </div>
+  <figure class="hero-photo">
+    <img src="assets/hero.jpg" alt="Sorniza Costoff" width="2200" height="1185" fetchpriority="high">
+    <figcaption>Sorniza Costoff <span>· Psychologin</span></figcaption>
+  </figure>
 </section>
 
-<!-- PROOF -->
-<div class="proof">
+<!-- WENDEPUNKTE -->
+<section class="sec" id="wege" aria-labelledby="h-wege">
   <div class="wrap">
-    <ul>
-      <li><b>Psychologin</b>mit Fokus auf Veränderung</li>
-      <li><b>15+ Jahre</b>Erfahrung in der Unternehmensberatung</li>
-      <li><b>Hogan Assessments</b>wissenschaftlich fundierte Diagnostik</li>
-      <li><b>Berlin</b>persönlich und vertraulich</li>
-    </ul>
-  </div>
-</div>
-
-<!-- WO STEHST DU -->
-<section class="sec" id="wo-stehst-du" aria-labelledby="h-where">
-  <div class="wrap">
-    <div class="sec-head">
+    <div class="head">
       <div>
-        <p class="eyebrow">Deine Karrierelinie</p>
-        <h2 id="h-where">Wo stehst du <em class="g">gerade</em>?</h2>
+        <p class="kicker">Jede Karriere hat Wendepunkte.</p>
+        <h2 id="h-wege">An welchem stehst du <span class="g">gerade</span>?</h2>
       </div>
-      <p>Jede Karriere hat Momente, in denen sich die Richtung entscheidet. Für jeden dieser Momente gibt es eine passende Begleitung. Wähle den, der sich nach dir anfühlt.</p>
+      <p>Wähle den Moment, der sich nach dir anfühlt. Für jeden gibt es eine eigene Begleitung mit klarem Ziel.</p>
     </div>
-    <div class="career-line">
-      <svg class="path" viewBox="0 0 1000 80" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M6 7 C 120 7, 160 51, 256 51 S 420 69, 506 69 S 640 25, 756 25 S 900 7, 1000 7"/>
+
+    <div class="selector" role="tablist" aria-label="Wendepunkte">
+      <svg class="curve" viewBox="0 0 1000 170" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 27 C 120 27, 170 121, 260 121 S 420 159, 520 159 S 660 61, 780 61 S 930 27, 1000 27"/>
+        <path id="curve-on" d="M0 27 C 120 27, 170 121, 260 121 S 420 159, 520 159 S 660 61, 780 61 S 930 27, 1000 27"/>
       </svg>
-      <a class="moment" href="#career-decision">
-        <span class="dot" aria-hidden="true"></span>
-        <span class="when">Vor der Entscheidung</span>
-        <h3>„Ich will etwas ändern, weiß aber nicht, was passt.“</h3>
-        <p>Du zweifelst an deinem Job und willst den nächsten Schritt fundiert angehen.</p>
-        <span class="to">Executive Career Decision <span aria-hidden="true">→</span></span>
-      </a>
-      <a class="moment" href="#neustart">
-        <span class="dot" aria-hidden="true"></span>
-        <span class="when">Nach dem Bruch</span>
-        <h3>„Mein Job endet. Wie geht es jetzt weiter?“</h3>
-        <p>Du willst dich schnell, gezielt und mit Selbstvertrauen neu orientieren.</p>
-        <span class="to">Neustart <span aria-hidden="true">→</span></span>
-      </a>
-      <a class="moment" href="#erste-100-tage">
-        <span class="dot" aria-hidden="true"></span>
-        <span class="when">Vor dem Start</span>
-        <h3>„Ich habe zugesagt. Jetzt muss es sitzen.“</h3>
-        <p>Du übernimmst eine neue Führungsrolle und willst die Probezeit souverän meistern.</p>
-        <span class="to">Die ersten 100 Tage <span aria-hidden="true">→</span></span>
-      </a>
-      <a class="moment" href="#leadership">
-        <span class="dot" aria-hidden="true"></span>
-        <span class="when">Mitten in der Rolle</span>
-        <h3>„Ich führe. Und will es besser können.“</h3>
-        <p>Kommunikation, Selbstmanagement, Stress oder Präsenz fordern dich heraus.</p>
-        <span class="to">Leadership Presence <span aria-hidden="true">→</span></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ANGEBOTE -->
-<section class="sec" id="angebote" aria-labelledby="h-offers" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <p class="eyebrow">Begleitung</p>
-        <h2 id="h-offers">Vier Wege zu mehr <em class="g">Klarheit</em>.</h2>
-      </div>
-      <p>Jede Begleitung ist ein klar strukturierter Prozess mit festem Ziel. Inhalte und Tempo passen wir im Erstgespräch an deine Situation an.</p>
+      <button class="stop" type="button" role="tab" aria-selected="true" aria-controls="p-decision"><span class="pin"></span><span class="when">Vor der Entscheidung</span><span class="say">„Ich will etwas ändern, weiß aber nicht, was passt.“</span></button>
+      <button class="stop" type="button" role="tab" aria-selected="false" aria-controls="p-neustart"><span class="pin"></span><span class="when">Nach dem Bruch</span><span class="say">„Mein Job endet. Und jetzt?“</span></button>
+      <button class="stop" type="button" role="tab" aria-selected="false" aria-controls="p-100"><span class="pin"></span><span class="when">Vor dem Start</span><span class="say">„Ich habe zugesagt. Jetzt muss es sitzen.“</span></button>
+      <button class="stop" type="button" role="tab" aria-selected="false" aria-controls="p-leadership"><span class="pin"></span><span class="when">Mitten in der Rolle</span><span class="say">„Ich führe und will es besser können.“</span></button>
     </div>
 
-    <div class="offers">
-      <article class="offer reveal" id="career-decision">
-        <div class="offer-name">
-          <span class="tag">Karriereorientierung</span>
+    <div class="panels">
+      <article class="panel on" id="p-decision" role="tabpanel">
+        <div class="p-title p-anim">
+          <span class="sub">Karriereorientierung</span>
           <h3>Executive Career Decision</h3>
-          <p class="for">Für dich, wenn du dich in deinem Job unsicher fühlst, wechseln möchtest und noch nicht genau weißt, was wirklich zu dir passt.</p>
+          <p class="voice">„Ich will etwas ändern, weiß aber nicht, was passt.“</p>
         </div>
-        <div class="offer-body">
-          <p class="promise">Aus dem Bauchgefühl „irgendetwas muss sich ändern“ wird eine Entscheidung, hinter der du stehst.</p>
-          <ol class="steps">
-            <li><div><b>Fundierte Analyse mit Hogan Assessments</b><span>Persönlichkeit, Verhalten unter Druck sowie Werte und Motive, wissenschaftlich gemessen.</span></div></li>
-            <li><div><b>Reflexive Sitzungen</b><span>Life-Line-Interview und CV-Analyse: Was hat dich bisher getragen, was hat dich gebremst?</span></div></li>
-            <li><div><b>Auswertung und Strategie-Call</b><span>Wir legen Analyse und Reflexion übereinander und leiten deine Optionen ab.</span></div></li>
-            <li><div><b>Finalisierung deiner Positionierung</b><span>Klar formuliert, wofür du stehst und wohin du willst.</span></div></li>
-            <li><div><b>Individuelle Bewerbungsstrategie</b><span>Welche Rollen, welche Unternehmen, welcher Weg dorthin.</span></div></li>
-          </ol>
-          <p class="option"><b>Optional:</b> Profiloptimierung für CV, LinkedIn und XING sowie gezielte Netzwerkstrategie.</p>
-          <div class="offer-cta">
-            <a class="btn btn-primary" href="#anfrage" data-topic="Executive Career Decision">Erstgespräch zu diesem Thema <span class="arrow" aria-hidden="true">→</span></a>
+        <div class="p-body p-anim">
+          <p>Du spürst seit einer Weile, dass sich etwas ändern muss. Nur wohin, ist offen. Wir beginnen mit einer fundierten Analyse über die Hogan Assessments und mit reflexiven Sitzungen, in denen wir per Life-Line-Interview und CV-Analyse auf deinen bisherigen Weg schauen. Im Strategie-Call legen wir beides übereinander und schärfen deine Positionierung. Daraus entsteht eine Bewerbungsstrategie, die zu dir passt.</p>
+          <div class="track" aria-label="Ablauf">
+            <span>Analyse<i>Hogan Assessments</i></span>
+            <span>Reflexion<i>Life Line &amp; CV</i></span>
+            <span>Strategie<i>Auswertung &amp; Call</i></span>
+            <span>Positionierung<i>klar formuliert</i></span>
+            <span>Bewerbung<i>deine Strategie</i></span>
           </div>
+          <p class="p-note">Auf Wunsch optimieren wir zum Schluss deinen CV, dein LinkedIn- und XING-Profil und deine Netzwerkstrategie.</p>
+          <div class="p-cta"><a class="btn btn-solid" href="#anfrage" data-topic="Executive Career Decision">Erstgespräch zu diesem Weg <span class="arrow" aria-hidden="true">→</span></a></div>
         </div>
       </article>
 
-      <article class="offer reveal" id="erste-100-tage">
-        <div class="offer-name">
-          <span class="tag">Onboarding in die Führungsrolle</span>
-          <h3>Die ersten 100&nbsp;Tage</h3>
-          <p class="for">Für dich, wenn du eine neue Führungsrolle übernimmst und vom ersten Tag an wirksam sein willst.</p>
-        </div>
-        <div class="offer-body">
-          <p class="promise">Damit du in der neuen Rolle nicht nur ankommst, sondern die Probezeit souverän bestehst und Vertrauen aufbaust.</p>
-          <ul class="chips">
-            <li>Vorbereitung auf die neue Rolle</li>
-            <li>Erwartungen klären</li>
-            <li>Stakeholder und Networking</li>
-            <li>Die ersten Entscheidungen</li>
-            <li>Sparring während der Probezeit</li>
-          </ul>
-          <div class="offer-cta">
-            <a class="btn btn-primary" href="#anfrage" data-topic="Die ersten 100 Tage">Erstgespräch zu diesem Thema <span class="arrow" aria-hidden="true">→</span></a>
-          </div>
-        </div>
-      </article>
-
-      <article class="offer reveal" id="neustart">
-        <div class="offer-name">
-          <span class="tag">Outplacement &amp; Neuorientierung</span>
+      <article class="panel" id="p-neustart" role="tabpanel">
+        <div class="p-title p-anim">
+          <span class="sub">Outplacement &amp; Neuorientierung</span>
           <h3>Neustart</h3>
-          <p class="for">Für dich, wenn du deinen Job verloren hast oder er bald endet, egal ob dein Arbeitgeber die Begleitung übernimmt oder du sie privat buchst.</p>
+          <p class="voice">„Mein Job endet. Und jetzt?“</p>
         </div>
-        <div class="offer-body">
-          <p class="promise">Eine berufliche Neuorientierung, die so effizient wie möglich ist und dich dabei nicht unter Wert verkauft.</p>
-          <ul class="chips">
-            <li>Standortbestimmung</li>
-            <li>Neue Zielrichtung</li>
-            <li>Bewerbungsstrategie</li>
-            <li>CV, LinkedIn und XING</li>
-            <li>Netzwerk aktivieren</li>
-            <li>Gespräche und Verhandlung</li>
-          </ul>
-          <div class="offer-cta">
-            <a class="btn btn-primary" href="#anfrage" data-topic="Neustart (Outplacement)">Erstgespräch zu diesem Thema <span class="arrow" aria-hidden="true">→</span></a>
-          </div>
+        <div class="p-body p-anim">
+          <p>Ein Jobverlust fühlt sich selten nach Chance an. Und doch ist er oft der Moment, in dem Menschen zum ersten Mal ehrlich fragen, was sie eigentlich wollen. Wir sortieren gemeinsam deine Lage, finden eine neue Zielrichtung und bauen Bewerbung, Profil und Netzwerk so auf, dass deine Neuorientierung schnell und mit Selbstvertrauen gelingt.</p>
+          <p class="p-note">Ob dein Arbeitgeber die Begleitung übernimmt oder du sie privat buchst: Was wir besprechen, bleibt zwischen uns.</p>
+          <div class="p-cta"><a class="btn btn-solid" href="#anfrage" data-topic="Neustart (Outplacement)">Erstgespräch zu diesem Weg <span class="arrow" aria-hidden="true">→</span></a></div>
         </div>
       </article>
 
-      <article class="offer reveal" id="leadership">
-        <div class="offer-name">
-          <span class="tag">Leadership-Coaching</span>
-          <h3>Leadership Presence</h3>
-          <p class="for">Für dich, wenn du bereits führst und an konkreten Themen wachsen willst, die deinen Alltag bestimmen.</p>
+      <article class="panel" id="p-100" role="tabpanel">
+        <div class="p-title p-anim">
+          <span class="big100" aria-hidden="true">100</span>
+          <span class="sub">Onboarding in die Führungsrolle</span>
+          <h3>Die ersten 100&nbsp;Tage</h3>
+          <p class="voice">„Ich habe zugesagt. Jetzt muss es sitzen.“</p>
         </div>
-        <div class="offer-body">
-          <p class="promise">Mehr Wirkung, mehr Ruhe und mehr Klarheit im Umgang mit deinem Team und mit dir selbst.</p>
-          <ul class="chips">
-            <li>Kommunikation</li>
-            <li>Selbstmanagement</li>
-            <li>Stressmanagement</li>
-            <li>Präsenz</li>
-          </ul>
-          <div class="offer-cta">
-            <a class="btn btn-primary" href="#anfrage" data-topic="Leadership Presence">Erstgespräch zu diesem Thema <span class="arrow" aria-hidden="true">→</span></a>
-          </div>
+        <div class="p-body p-anim">
+          <p>Der Vertrag ist unterschrieben. In den nächsten Monaten entscheidet sich, ob du in der neuen Rolle wirklich ankommst. Wir bereiten deinen Start vor, klären die Erwartungen an dich, planen, wen du früh kennenlernen solltest, und spielen deine ersten Entscheidungen durch, bevor du sie triffst. Damit du nach der Probezeit fest im Sattel sitzt.</p>
+          <div class="p-cta"><a class="btn btn-solid" href="#anfrage" data-topic="Die ersten 100 Tage">Erstgespräch zu diesem Weg <span class="arrow" aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
+
+      <article class="panel" id="p-leadership" role="tabpanel">
+        <div class="p-title p-anim">
+          <span class="sub">Leadership-Coaching</span>
+          <h3>Leadership Presence</h3>
+          <p class="voice">„Ich führe und will es besser können.“</p>
+        </div>
+        <div class="p-body p-anim">
+          <p>Du führst ein Team und weißt genau, wo es hakt: in Gesprächen, die anders laufen als geplant, in Wochen ohne Luft, in Momenten, in denen du präsenter wirken willst. Genau an diesen Situationen arbeiten wir, an deiner Kommunikation, deinem Selbstmanagement, deinem Umgang mit Stress und an der Präsenz, mit der du einen Raum betrittst.</p>
+          <div class="p-cta"><a class="btn btn-solid" href="#anfrage" data-topic="Leadership Presence">Erstgespräch zu diesem Weg <span class="arrow" aria-hidden="true">→</span></a></div>
         </div>
       </article>
     </div>
@@ -577,34 +449,20 @@ footer a:hover { color: var(--gold-light); }
 
 <!-- HOGAN -->
 <section class="sec ink" aria-labelledby="h-hogan">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <p class="eyebrow">Die Grundlage</p>
-        <h2 id="h-hogan">Entscheidungen auf <em class="g">Daten</em>, nicht auf Vermutungen.</h2>
-      </div>
-      <p>Die Hogan Assessments gehören zu den international am besten validierten Persönlichkeitsverfahren im beruflichen Kontext. Sie zeigen, was dich antreibt, wo deine Stärken wirken und was dich unter Druck ausbremst.</p>
+  <div class="wrap hogan">
+    <div class="hogan-copy">
+      <p class="kicker">Die Grundlage</p>
+      <h2 id="h-hogan">Entscheidungen auf <span class="g">Daten</span> gebaut, nicht auf Vermutungen.</h2>
+      <p>Die Hogan Assessments gehören international zu den am besten validierten Persönlichkeitsverfahren im Berufsleben. Drei Perspektiven zeigen, <b>wie du an guten Tagen wirkst</b>, <b>was unter Druck mit dir passiert</b> und <b>was dich im Kern antreibt</b>.</p>
+      <p>Erst wo sich die drei überschneiden, wird sichtbar, welche Rolle wirklich zu dir passt. Die Ergebnisse besprechen wir ausführlich und übersetzen sie in deine Strategie.</p>
     </div>
-    <div class="hogan-grid">
-      <article class="reveal">
-        <span class="abbr">HPI</span>
-        <h3>Hogan Personality Inventory</h3>
-        <p class="q">Wie wirkst du an guten Tagen?</p>
-        <p>Deine Persönlichkeit im Arbeitsalltag und die Stärken, auf die du bauen kannst.</p>
-      </article>
-      <article class="reveal">
-        <span class="abbr">HDS</span>
-        <h3>Hogan Development Survey</h3>
-        <p class="q">Was passiert unter Druck?</p>
-        <p>Verhaltensmuster, die in Stress und Unsicherheit sichtbar werden und Karrieren bremsen können.</p>
-      </article>
-      <article class="reveal">
-        <span class="abbr">MVPI</span>
-        <h3>Motives, Values, Preferences</h3>
-        <p class="q">Was treibt dich wirklich an?</p>
-        <p>Deine Werte und Motive und damit die Umgebung, in der du langfristig zufrieden bist.</p>
-      </article>
-    </div>
+    <svg class="venn reveal" viewBox="0 0 520 470" role="img" aria-label="Drei Hogan-Verfahren: HPI für deine Wirkung, HDS für dein Verhalten unter Druck, MVPI für deine Werte und Motive. In der Mitte: deine Klarheit.">
+      <g><circle class="c" cx="190" cy="180" r="140"/><text class="ab" x="122" y="142" text-anchor="middle">HPI</text><text class="lb" x="122" y="166" text-anchor="middle">Wie du wirkst</text></g>
+      <g><circle class="c" cx="330" cy="180" r="140"/><text class="ab" x="398" y="142" text-anchor="middle">HDS</text><text class="lb" x="398" y="166" text-anchor="middle">Verhalten unter Druck</text></g>
+      <g><circle class="c" cx="260" cy="300" r="140"/><text class="ab" x="260" y="388" text-anchor="middle">MVPI</text><text class="lb" x="260" y="412" text-anchor="middle">Was dich antreibt</text></g>
+      <circle class="core" cx="260" cy="222" r="5"/>
+      <text class="cl" x="260" y="250" text-anchor="middle">deine Klarheit</text>
+    </svg>
   </div>
 </section>
 
@@ -612,83 +470,64 @@ footer a:hover { color: var(--gold-light); }
 <section class="sec" id="selbsttest" aria-labelledby="h-test" style="background:var(--mist)">
   <div class="wrap test">
     <div class="test-intro">
-      <p class="eyebrow">Selbsttest</p>
-      <h2 id="h-test">Welche Begleitung passt zu <em class="g">deiner</em> Situation?</h2>
-      <p>Fünf kurze Fragen, ehrlich beantwortet. Am Ende siehst du, welcher Weg am besten zu dir passt, und kannst direkt ein Erstgespräch dazu anfragen.</p>
-      <img class="closeup" src="assets/closeup.jpg" alt="" width="1400" height="932" loading="lazy">
+      <p class="kicker">Selbsttest, rund zwei Minuten</p>
+      <h2 id="h-test">Welcher Weg passt zu <span class="g">dir</span>?</h2>
+      <p>Fünf Fragen, ehrlich beantwortet. Am Ende siehst du, welche Begleitung zu deiner Situation passt, und kannst direkt ein Gespräch dazu anfragen.</p>
     </div>
     <div class="quiz" id="quiz" aria-live="polite"></div>
-  </div>
-</section>
-
-<!-- SORNIZA -->
-<section class="sec" id="sorniza" aria-labelledby="h-about">
-  <div class="wrap about">
-    <div class="about-img reveal">
-      <img src="assets/portrait.jpg" alt="Porträt von Sorniza Costoff" width="1100" height="1414" loading="lazy">
-      <svg viewBox="0 0 400 400" aria-hidden="true">
-        <path class="arc" d="M80 30 A190 190 0 0 1 80 370"/>
-        <path class="arc b" d="M110 70 A150 150 0 0 1 110 330"/>
-      </svg>
-    </div>
-    <div class="about-copy">
-      <p class="eyebrow">Über Sorniza Costoff</p>
-      <h2 id="h-about">Psychologin. Beraterin. <em class="g">Sparringspartnerin.</em></h2>
-      <p>Ich bin Psychologin und habe über 15 Jahre in der Unternehmensberatung gearbeitet, mit Schwerpunkt auf der Begleitung von Führungskräften und Veränderungsprozessen. Ich kenne beide Seiten: die Erwartungen der Unternehmen und die Fragen, die Menschen sich in diesen Momenten stellen.</p>
-      <blockquote>Gute Karriereentscheidungen entstehen, wenn du dich selbst klar siehst. Dabei helfe ich dir, mit fairem Feedback und echtem Interesse an deinem Weg.</blockquote>
-      <p>Ich verbinde psychologische Diagnostik mit konkreter Strategie. Du bekommst keine Floskeln, sondern eine ehrliche Einschätzung und einen Plan, den du umsetzen kannst.</p>
-      <ul class="values" aria-label="Arbeitsweise">
-        <li>wertschätzend</li>
-        <li>ganzheitlich</li>
-        <li>ergebnisorientiert</li>
-      </ul>
-      <p class="sig"><b>Sorniza Costoff</b>Gründerin, Costoff Clarity &amp; Change</p>
-    </div>
   </div>
 </section>
 
 <!-- STIMMEN -->
 <section class="sec ink" aria-labelledby="h-voices">
   <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <p class="eyebrow">Stimmen</p>
-        <h2 id="h-voices">Was Klientinnen und Klienten <em class="g">erzählen</em>.</h2>
-      </div>
-    </div>
+    <h2 id="h-voices" class="kicker" style="margin-bottom:clamp(2rem,5vw,3.5rem)">Was Klientinnen und Klienten erzählen</h2>
     <div class="voices">
-      <figure class="voice reveal">
+      <figure class="q q1 reveal">
         <blockquote>Sorniza hat mich beim Wechsel in eine neue Branche begleitet. Heute bin ich erfolgreich als Gesamtverkaufsleiter einer Bäckereikette tätig.</blockquote>
-        <figcaption><b>J. Jätz</b>Gesamtverkaufsleiter</figcaption>
+        <figcaption><span><b>J. Jätz</b>, Gesamtverkaufsleiter</span></figcaption>
       </figure>
-      <figure class="voice reveal">
+      <figure class="q q2 reveal">
         <blockquote>Die Vorbereitung auf meine Gehaltsverhandlung hat mir geholfen, meinen Wert für das Unternehmen höher einzuschätzen.</blockquote>
-        <figcaption><b>M. Czech</b>Teamleiter IT</figcaption>
+        <figcaption><span><b>M. Czech</b>, Teamleiter IT</span></figcaption>
       </figure>
-      <figure class="voice reveal">
+      <figure class="q q3 reveal">
         <blockquote>Seit Jahren ist Sorniza meine Sparringspartnerin, in personellen Krisen genauso wie in Höhepunkten.</blockquote>
-        <figcaption><b>D. Toschmakov</b>Geschäftsführerin</figcaption>
+        <figcaption><span><b>D. Toschmakov</b>, Geschäftsführerin</span></figcaption>
       </figure>
     </div>
   </div>
 </section>
 
+<!-- ÜBER SORNIZA -->
+<section class="sec" id="sorniza" aria-labelledby="h-about">
+  <div class="wrap about">
+    <figure class="about-fig reveal">
+      <img src="assets/portrait.jpg" alt="Porträt von Sorniza Costoff" width="1100" height="1414" loading="lazy">
+    </figure>
+    <div class="about-copy">
+      <p class="kicker">Über mich</p>
+      <h2 id="h-about">Ich kenne beide Seiten des <span class="g">Tisches</span>.</h2>
+      <p>Ich bin Psychologin und habe <b>über 15 Jahre in der Unternehmensberatung</b> gearbeitet, mit Schwerpunkt auf Führungskräften und Veränderungsprozessen. Ich weiß, wie Unternehmen auf Kandidatinnen und Führungskräfte schauen. Und ich weiß, welche Fragen sich Menschen stellen, wenn ihre Karriere an einem Wendepunkt steht.</p>
+      <p class="pull">Gute Entscheidungen entstehen, wenn du dich selbst klar siehst. Dabei helfe ich dir mit fairem Feedback und echtem Interesse an deinem Weg.</p>
+      <p>Ich arbeite wertschätzend und ganzheitlich, aber immer mit Blick auf ein Ergebnis. Du bekommst von mir eine ehrliche Einschätzung und einen Plan, den du umsetzen kannst.</p>
+      <div class="sign">
+        <span class="hand" aria-hidden="true">Sorniza Costoff</span>
+        <small>Gründerin, Costoff Clarity &amp; Change · Berlin</small>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ANFRAGE -->
-<section class="sec" id="anfrage" aria-labelledby="h-contact">
+<section class="sec ink" id="anfrage" aria-labelledby="h-contact">
   <div class="wrap contact">
     <div class="contact-intro">
-      <p class="eyebrow">Erstgespräch</p>
-      <h2 id="h-contact">Lass uns <em class="g">sprechen</em>.</h2>
-      <p>Im Erstgespräch lernen wir uns kennen und klären, ob und wie ich dich unterstützen kann. Unverbindlich und vertraulich.</p>
-      <ol class="flow">
-        <li><span class="n">1</span><div><b>Anfrage senden</b><span>Ein paar Zeilen zu deiner Situation genügen.</span></div></li>
-        <li><span class="n">2</span><div><b>30 Minuten Kennenlernen</b><span>Wir sprechen über dein Anliegen und deine Ziele.</span></div></li>
-        <li><span class="n">3</span><div><b>Dein Vorschlag</b><span>Du erhältst eine Empfehlung für die passende Begleitung.</span></div></li>
-      </ol>
-      <div class="direct">
-        <span>Lieber direkt einen Termin wählen?</span>
-        <a href="https://calendly.com/contact-costoff/30min" target="_blank" rel="noopener">Termin im Kalender buchen ↗</a>
-        <span>Oder schreib an <b style="color:var(--ink);user-select:all">contact@costoff.de</b></span>
+      <h2 id="h-contact">Lass uns <span class="g">sprechen</span>.</h2>
+      <p>Schreib mir ein paar Zeilen zu deiner Situation. Danach nehmen wir uns 30 Minuten für ein erstes, unverbindliches Gespräch, und du weißt, ob und wie ich dich begleiten kann.</p>
+      <div class="alt">
+        <span>Lieber direkt einen Termin wählen? <a class="tlink" href="https://calendly.com/contact-costoff/30min" target="_blank" rel="noopener">Zum Kalender ↗</a></span>
+        <span>Oder per E-Mail: <span class="mail">contact@costoff.de</span></span>
       </div>
     </div>
 
@@ -704,105 +543,110 @@ footer a:hover { color: var(--gold-light); }
         <select id="f-topic" name="topic">
           <option>Ich weiß es noch nicht genau</option>
           <option>Executive Career Decision</option>
-          <option>Die ersten 100 Tage</option>
           <option>Neustart (Outplacement)</option>
+          <option>Die ersten 100 Tage</option>
           <option>Leadership Presence</option>
         </select>
       </div>
-      <div class="field"><label for="f-msg">Deine Situation in ein paar Sätzen</label><textarea id="f-msg" name="message" placeholder="Zum Beispiel: Ich bin seit acht Jahren Teamleiterin und überlege, ob ein Wechsel in die Geschäftsführung der richtige Schritt ist."></textarea></div>
+      <div class="field"><label for="f-msg">Deine Situation in ein paar Sätzen</label><textarea id="f-msg" name="message" placeholder="Zum Beispiel: Ich leite seit acht Jahren ein Team und frage mich, ob der Schritt in die Geschäftsführung der richtige ist."></textarea></div>
       <label class="consent" for="f-ok"><input id="f-ok" type="checkbox" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert werden. Details in der Datenschutzerklärung.</span></label>
       <div class="form-foot">
-        <button class="btn btn-primary" type="submit">Anfrage senden <span class="arrow" aria-hidden="true">→</span></button>
-        <small>Antwort in der Regel innerhalb von 48 Stunden.</small>
+        <button class="btn btn-solid" type="submit">Anfrage senden <span class="arrow" aria-hidden="true">→</span></button>
+        <small>Du bekommst eine persönliche Antwort von Sorniza.</small>
       </div>
-      <div class="sent" id="sent" hidden>
-        <b>Vorschau der Bestätigung</b>
-        <span>Im Konzept ist das Formular noch nicht angebunden, es wurde nichts versendet. In der Live-Version landet die Anfrage direkt bei Sorniza, und an dieser Stelle steht eine persönliche Bestätigung.</span>
-      </div>
+      <div class="sent" id="sent" hidden><b>Vorschau der Bestätigung</b>Im Konzept ist das Formular noch nicht angebunden, es wurde nichts versendet. In der Live-Version geht die Anfrage direkt an Sorniza.</div>
     </form>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="sec" aria-labelledby="h-faq" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <p class="eyebrow">Häufige Fragen</p>
-        <h2 id="h-faq">Bevor du anfragst.</h2>
-      </div>
+<section class="sec" aria-labelledby="h-faq">
+  <div class="wrap faq-wrap">
+    <div>
+      <p class="kicker">Bevor du anfragst</p>
+      <h2 id="h-faq">Häufige Fragen</h2>
     </div>
     <div class="faq">
       <details>
         <summary>Was passiert im Erstgespräch?</summary>
-        <p>Wir nehmen uns 30 Minuten Zeit. Du erzählst, wo du stehst und was dich beschäftigt. Ich stelle Fragen und sage dir ehrlich, ob und wie ich dich unterstützen kann. Das Gespräch ist unverbindlich.</p>
+        <p>Wir nehmen uns 30 Minuten Zeit. Du erzählst, wo du stehst und was dich beschäftigt. Ich stelle Fragen und sage dir offen, ob und wie ich dich unterstützen kann. Das Gespräch ist unverbindlich.</p>
       </details>
       <details>
-        <summary>Woher weiß ich, welche Begleitung die richtige ist?</summary>
-        <p>Der Selbsttest gibt dir eine erste Orientierung. Die genaue Empfehlung erarbeiten wir gemeinsam im Erstgespräch, oft verbinden sich auch Elemente aus mehreren Wegen.</p>
+        <summary>Woher weiß ich, welcher Weg der richtige ist?</summary>
+        <p>Der Selbsttest gibt dir eine erste Orientierung. Die genaue Empfehlung erarbeiten wir gemeinsam im Erstgespräch. Oft verbinden sich auch Elemente aus mehreren Wegen.</p>
       </details>
       <details>
         <summary>Was genau sind Hogan Assessments?</summary>
-        <p>Drei wissenschaftlich validierte Fragebögen, die du online ausfüllst. Sie messen deine Persönlichkeit im Arbeitsalltag, dein Verhalten unter Druck sowie deine Werte und Motive. Die Ergebnisse besprechen wir ausführlich in einer eigenen Sitzung.</p>
-      </details>
-      <details>
-        <summary>Kann mein Arbeitgeber das Outplacement bezahlen?</summary>
-        <p>Ja, viele Unternehmen bieten Outplacement als Teil einer Trennungsvereinbarung an. Du kannst die Begleitung aber auch privat buchen. Sprich das gern im Erstgespräch an.</p>
+        <p>Drei wissenschaftlich validierte Fragebögen, die du online ausfüllst. Sie zeigen deine Wirkung im Arbeitsalltag, dein Verhalten unter Druck sowie deine Werte und Motive. Die Ergebnisse besprechen wir ausführlich in einer eigenen Sitzung.</p>
       </details>
       <details>
         <summary>Bleibt alles vertraulich?</summary>
-        <p>Ja. Alles, was du im Coaching teilst, bleibt zwischen uns. Das gilt auch dann, wenn dein Arbeitgeber die Begleitung finanziert.</p>
+        <p>Ja. Was du im Coaching teilst, bleibt zwischen uns, auch wenn dein Arbeitgeber die Begleitung finanziert.</p>
       </details>
     </div>
-  </div>
-</section>
-
-<!-- CLOSING -->
-<section class="ink closing" aria-labelledby="h-close">
-  <svg viewBox="0 0 900 900" aria-hidden="true">
-    <path class="arc" d="M280 90 A380 380 0 1 1 280 810"/>
-    <path class="arc b" d="M300 150 A320 320 0 1 1 300 750"/>
-    <path class="arc" d="M320 210 A262 262 0 1 1 320 690"/>
-  </svg>
-  <div class="wrap">
-    <p class="eyebrow">Clarity &amp; Change</p>
-    <h2 id="h-close">Klarheit beginnt mit <em class="g">einem</em> Gespräch.</h2>
-    <p>Du musst nicht schon wissen, wohin. Es reicht, dass du es herausfinden willst.</p>
-    <a class="btn btn-primary" href="#anfrage">Unverbindliches Erstgespräch <span class="arrow" aria-hidden="true">→</span></a>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span class="logo-plate"><img src="assets/logo.png" alt="Costoff Clarity &amp; Change" width="556" height="180" loading="lazy"></span>
+    <img src="assets/logo.png" alt="Costoff Clarity &amp; Change" width="556" height="180" loading="lazy">
     <nav aria-label="Fußzeile">
       <a href="https://www.linkedin.com/in/sornizacostoff/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="#anfrage">Kontakt</a>
       <a href="#top">Impressum</a>
       <a href="#top">Datenschutz</a>
     </nav>
-    <span>© 2026 Costoff Clarity &amp; Change · Berlin</span>
+    <span>© 2026 Costoff Clarity &amp; Change</span>
   </div>
 </footer>
 
-<div class="mcta" id="mcta">
-  <a class="btn btn-ghost" href="#selbsttest">Selbsttest</a>
-  <a class="btn btn-primary" href="#anfrage">Erstgespräch</a>
+<div class="mcta ink" id="mcta">
+  <a class="btn btn-line" href="#selbsttest">Selbsttest</a>
+  <a class="btn btn-gold" href="#anfrage">Erstgespräch</a>
 </div>
 
 <script>
 (() => {
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Wendepunkte: the curve is the tab bar ---------- */
+  const stops = [...document.querySelectorAll(".stop")];
+  const panels = [...document.querySelectorAll(".panel")];
+  const curve = document.getElementById("curve-on");
+  const len = curve.getTotalLength();
+  const xs = [0, .26, .52, .78];
+  const box = 1000;
+  const lenAtX = fx => { let lo = 0, hi = len; for (let k = 0; k < 24; k++) { const m = (lo + hi) / 2; curve.getPointAtLength(m).x < fx * box ? lo = m : hi = m; } return lo; };
+  const reach = xs.map(x => Math.max(.04, lenAtX(x) / len));
+  curve.style.strokeDasharray = len;
+  curve.style.strokeDashoffset = len * (1 - reach[0]);
+  function select(i, focus) {
+    stops.forEach((s, j) => { s.setAttribute("aria-selected", j === i); s.tabIndex = j === i ? 0 : -1; });
+    panels.forEach((p, j) => p.classList.toggle("on", j === i));
+    curve.style.transition = reduced ? "none" : "stroke-dashoffset .9s cubic-bezier(.2,.7,.2,1)";
+    curve.style.strokeDashoffset = len * (1 - reach[i]);
+    if (focus) stops[i].focus();
+  }
+  stops.forEach((s, i) => {
+    s.addEventListener("click", () => select(i));
+    s.addEventListener("keydown", e => {
+      if (e.key === "ArrowRight") select((i + 1) % stops.length, true);
+      if (e.key === "ArrowLeft") select((i + stops.length - 1) % stops.length, true);
+    });
+  });
+  select(0);
+
   /* ---------- Self-test ---------- */
   const P = {
-    A: { id: "career-decision", name: "Executive Career Decision", tag: "Karriereorientierung", topic: "Executive Career Decision",
-         text: "Du spürst, dass sich etwas ändern muss, aber die Richtung ist noch offen. Eine fundierte Analyse mit Hogan Assessments und reflexive Sitzungen geben dir die Klarheit, die dir gerade fehlt, und daraus eine Positionierung, hinter der du stehst." },
-    B: { id: "erste-100-tage", name: "Die ersten 100 Tage", tag: "Onboarding in die Führungsrolle", topic: "Die ersten 100 Tage",
+    A: { tab: 0, name: "Executive Career Decision", topic: "Executive Career Decision",
+         text: "Du spürst, dass sich etwas ändern muss, die Richtung ist aber noch offen. Eine fundierte Analyse und reflexive Sitzungen geben dir die Klarheit, die dir gerade fehlt, und daraus eine Positionierung, hinter der du stehst." },
+    B: { tab: 2, name: "Die ersten 100 Tage", topic: "Die ersten 100 Tage",
          text: "Die Entscheidung ist gefallen, jetzt zählt der Start. Mit gezielter Vorbereitung und Sparring in der Probezeit baust du schnell Vertrauen auf und setzt die richtigen ersten Akzente." },
-    C: { id: "neustart", name: "Neustart", tag: "Outplacement & Neuorientierung", topic: "Neustart (Outplacement)",
-         text: "Du stehst vor einer Neuorientierung, die schnell und gut gelingen soll. Mit klarer Zielrichtung, starker Bewerbungsstrategie und aktiviertem Netzwerk kommst du effizient in die nächste passende Position." },
-    D: { id: "leadership", name: "Leadership Presence", tag: "Leadership-Coaching", topic: "Leadership Presence",
-         text: "Du bist in deiner Rolle angekommen und willst als Führungskraft wachsen. Im Coaching arbeiten wir konkret an Kommunikation, Selbstmanagement, Stress und Präsenz." }
+    C: { tab: 1, name: "Neustart", topic: "Neustart (Outplacement)",
+         text: "Du stehst vor einer Neuorientierung, die schnell und gut gelingen soll. Mit klarer Zielrichtung, starker Bewerbungsstrategie und aktiviertem Netzwerk kommst du in die nächste passende Position." },
+    D: { tab: 3, name: "Leadership Presence", topic: "Leadership Presence",
+         text: "Du bist in deiner Rolle angekommen und willst als Führungskraft wachsen. Wir arbeiten konkret an Kommunikation, Selbstmanagement, Stress und Präsenz." }
   };
   const Q = [
     { q: "Wie würdest du deine berufliche Situation gerade beschreiben?", a: [
@@ -833,78 +677,63 @@ footer a:hover { color: var(--gold-light); }
   const quiz = document.getElementById("quiz");
   let step = -1, picks = [];
   const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const head = (label, pct) => `<div class="quiz-top"><span>${label}</span><b>${pct}&nbsp;%</b></div><div class="bar"><i style="width:${pct}%"></i></div>`;
 
   function intro() {
-    quiz.innerHTML = `
-      <div class="quiz-top"><span>Selbsttest</span><span>ca. 2 Minuten</span></div>
-      <div class="bar"><i style="width:0%"></i></div>
+    quiz.innerHTML = `${head("Selbsttest", 0)}
       <h3>Fünf Fragen zu deiner beruflichen Situation.</h3>
-      <p style="color:var(--ink-soft)">Es gibt keine richtigen oder falschen Antworten. Wähle jeweils die Aussage, die am ehesten auf dich zutrifft. Deine Antworten bleiben in deinem Browser.</p>
-      <div><button class="btn btn-primary" type="button" id="q-start">Test starten <span class="arrow" aria-hidden="true">→</span></button></div>`;
+      <p style="color:var(--ink-soft);max-width:32rem">Es gibt keine richtigen oder falschen Antworten. Wähle jeweils die Aussage, die am ehesten auf dich zutrifft. Deine Antworten bleiben in deinem Browser.</p>
+      <div><button class="btn btn-solid" type="button" id="q-start">Test starten <span class="arrow" aria-hidden="true">→</span></button></div>`;
     quiz.querySelector("#q-start").onclick = () => { step = 0; render(); };
   }
-
   function render() {
     if (step >= Q.length) return result();
     const item = Q[step];
-    quiz.innerHTML = `
-      <div class="quiz-top"><span>Frage ${step + 1} von ${Q.length}</span><span>${Math.round(step / Q.length * 100)}&nbsp;%</span></div>
-      <div class="bar"><i style="width:${step / Q.length * 100}%"></i></div>
+    quiz.innerHTML = `${head(`Frage ${step + 1} von ${Q.length}`, Math.round(step / Q.length * 100))}
       <h3>${esc(item.q)}</h3>
       <div class="answers" role="group" aria-label="Antworten">
-        ${item.a.map((a, i) => `<button type="button" class="answer" data-i="${i}" aria-pressed="${picks[step] === i}"><span class="k">${"ABCD"[i]}</span><span>${esc(a[0])}</span></button>`).join("")}
+        ${item.a.map((a, i) => `<button type="button" class="answer" data-i="${i}" aria-pressed="${picks[step] === i}">${esc(a[0])}</button>`).join("")}
       </div>
-      <div class="quiz-nav">
-        <button type="button" class="linkbtn" id="q-back" ${step === 0 ? "disabled" : ""}>← Zurück</button>
-        <button type="button" class="linkbtn" id="q-reset">Neu beginnen</button>
-      </div>`;
+      <div class="quiz-nav"><button type="button" class="linkbtn" id="q-back" ${step === 0 ? "disabled" : ""}>← Zurück</button><button type="button" class="linkbtn" id="q-reset">Neu beginnen</button></div>`;
     quiz.querySelectorAll(".answer").forEach(b => b.onclick = () => {
       picks[step] = +b.dataset.i;
       quiz.querySelectorAll(".answer").forEach(x => x.setAttribute("aria-pressed", x === b));
-      setTimeout(() => { step++; render(); }, 220);
+      setTimeout(() => { step++; render(); }, 260);
     });
     quiz.querySelector("#q-back").onclick = () => { if (step > 0) { step--; render(); } };
     quiz.querySelector("#q-reset").onclick = () => { step = -1; picks = []; intro(); };
   }
-
   function result() {
     const score = { A: 0, B: 0, C: 0, D: 0 };
     picks.forEach((p, i) => { const w = Q[i].a[p][1]; for (const k in w) score[k] += w[k]; });
     const order = Object.keys(score).sort((a, b) => score[b] - score[a]);
-    const best = P[order[0]];
-    const max = Math.max(1, ...Object.values(score));
-    const total = Object.values(score).reduce((s, v) => s + v, 0) || 1;
-    quiz.innerHTML = `
-      <div class="quiz-top"><span>Dein Ergebnis</span><span>100&nbsp;%</span></div>
-      <div class="bar"><i style="width:100%"></i></div>
+    const best = P[order[0]], second = score[order[1]] >= 3 ? P[order[1]] : null;
+    quiz.innerHTML = `${head("Dein Ergebnis", 100)}
       <div class="result">
-        <span class="tag">${esc(best.tag)}</span>
+        <p class="kicker">Am besten passt zu dir</p>
         <h3>${esc(best.name)}</h3>
         <p>${esc(best.text)}</p>
-        <div class="mix" aria-label="Übereinstimmung mit den vier Begleitungen">
-          ${order.map(k => `<div class="${k === order[0] ? "top-pick" : ""}"><span>${esc(P[k].name)}</span><span class="track"><i style="width:${score[k] / max * 100}%"></i></span><span>${Math.round(score[k] / total * 100)}%</span></div>`).join("")}
-        </div>
+        ${second ? `<p class="fit">Auch Elemente aus <b>${esc(second.name)}</b> könnten für dich eine Rolle spielen. Das klären wir im Gespräch.</p>` : ""}
         <div class="actions">
-          <a class="btn btn-primary" href="#anfrage" id="q-cta">Erstgespräch dazu anfragen <span class="arrow" aria-hidden="true">→</span></a>
-          <a class="textlink" href="#${best.id}">Mehr zu ${esc(best.name)}</a>
+          <a class="btn btn-solid" href="#anfrage" id="q-cta">Erstgespräch dazu anfragen <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="tlink" href="#wege" id="q-more">Mehr über diesen Weg</a>
         </div>
         <div class="quiz-nav"><button type="button" class="linkbtn" id="q-back">← Letzte Frage ändern</button><button type="button" class="linkbtn" id="q-reset">Neu beginnen</button></div>
       </div>`;
-    quiz.querySelector("#q-cta").onclick = () => prefill(best.topic, `Selbsttest-Ergebnis: ${best.name}. Dein Thema ist im Formular schon ausgewählt.`);
+    quiz.querySelector("#q-cta").onclick = () => prefill(best.topic, `Dein Selbsttest-Ergebnis „${best.name}“ ist schon ausgewählt.`);
+    quiz.querySelector("#q-more").onclick = () => select(best.tab);
     quiz.querySelector("#q-back").onclick = () => { step = Q.length - 1; render(); };
     quiz.querySelector("#q-reset").onclick = () => { step = -1; picks = []; intro(); };
   }
   intro();
 
   /* ---------- Form ---------- */
-  const topic = document.getElementById("f-topic");
-  const hint = document.getElementById("quiz-hint");
+  const topic = document.getElementById("f-topic"), hint = document.getElementById("quiz-hint");
   function prefill(t, msg) {
     [...topic.options].forEach(o => { if (o.text === t) topic.value = o.value; });
     if (msg) { hint.textContent = msg; hint.hidden = false; }
   }
-  document.querySelectorAll("[data-topic]").forEach(a => a.addEventListener("click", () => prefill(a.dataset.topic, `Thema vorausgewählt: ${a.dataset.topic}`)));
-
+  document.querySelectorAll("[data-topic]").forEach(a => a.addEventListener("click", () => prefill(a.dataset.topic, `Thema ausgewählt: ${a.dataset.topic}`)));
   const form = document.getElementById("req");
   form.addEventListener("submit", e => {
     e.preventDefault();
@@ -913,21 +742,17 @@ footer a:hover { color: var(--gold-light); }
     document.getElementById("sent").hidden = false;
   });
 
-  /* ---------- Header + mobile CTA + reveal ---------- */
-  const top = document.getElementById("top"), mcta = document.getElementById("mcta");
+  /* ---------- Header, mobile CTA, reveal ---------- */
+  const top = document.getElementById("top"), mcta = document.getElementById("mcta"), contact = document.getElementById("anfrage");
   const onScroll = () => {
     top.classList.toggle("scrolled", scrollY > 8);
-    const contact = document.getElementById("anfrage").getBoundingClientRect();
-    mcta.classList.toggle("show", scrollY > 500 && !(contact.top < innerHeight && contact.bottom > 0));
+    const r = contact.getBoundingClientRect();
+    mcta.classList.toggle("show", scrollY > 600 && !(r.top < innerHeight && r.bottom > 0));
   };
   addEventListener("scroll", onScroll, { passive: true }); onScroll();
-
-  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  if ("IntersectionObserver" in window && !reduced) {
     const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.remove("pre"); io.unobserve(en.target); } }), { rootMargin: "0px 0px -8% 0px" });
-    document.querySelectorAll(".reveal").forEach(el => {
-      const r = el.getBoundingClientRect();
-      if (r.top > innerHeight) { el.classList.add("pre"); io.observe(el); }
-    });
+    document.querySelectorAll(".reveal").forEach(el => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add("pre"); io.observe(el); } });
   }
 })();
 </script>
