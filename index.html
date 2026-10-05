@@ -126,14 +126,14 @@ p { margin: 0; }
 
 /* Section scaffolding */
 section { scroll-margin-top: 84px; }
-.sec { padding-block: clamp(5rem, 11vw, 9rem); }
-.head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 1.5rem 4rem; align-items: end; margin-bottom: clamp(2.5rem, 6vw, 4.5rem); }
+.sec { padding-block: clamp(4rem, 8vw, 7rem); }
+.head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 1rem 4rem; align-items: end; margin-bottom: clamp(2rem, 4vw, 3rem); }
 .head h2 { font-size: var(--s-xl); margin-top: .6rem; }
 .head p { color: var(--ink-soft); max-width: 30rem; }
 @media (max-width: 860px) { .head { grid-template-columns: 1fr; } }
 
 /* WENDEPUNKTE: the curve is the tab bar */
-.selector { position: relative; display: grid; grid-template-columns: 26fr 26fr 26fr 22fr; padding-top: 180px; margin-bottom: 2.8rem; }
+.selector { position: relative; display: grid; grid-template-columns: 26fr 26fr 26fr 22fr; padding-top: 180px; margin-bottom: 2.2rem; }
 .selector svg.curve { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 170px; overflow: visible; pointer-events: none; }
 .selector svg.curve path { fill: none; stroke: var(--line); stroke-width: 1.25; }
 .selector svg.curve path#curve-on { stroke: var(--gold); }
@@ -153,41 +153,37 @@ section { scroll-margin-top: 84px; }
 .stop[aria-selected="true"] .when { color: var(--gold-deep); }
 .stop[aria-selected="true"] .say { color: var(--ink); }
 
-.panels { border-top: 1px solid var(--line); min-height: 30rem; }
-.panel { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 2rem 5rem; padding-top: clamp(2.5rem, 5vw, 4rem); }
+.panels { border-top: 1px solid var(--line); }
+.panel { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: 2rem clamp(2rem, 5vw, 4.5rem); padding-top: clamp(2rem, 4vw, 3rem); align-items: center; }
 .panel:not(.on) { display: none; }
-.panel.on .p-anim { animation: rise .7s var(--ease) both; }
-.panel.on .p-anim:nth-child(2) { animation-delay: .08s; }
-.p-title { display: grid; gap: 1.2rem; align-content: start; position: relative; isolation: isolate; }
-.p-title .sub { font-size: var(--s-xs); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--gold-deep); }
-.p-title h3 { font-size: clamp(2.3rem, 1.5rem + 2.8vw, 3.8rem); }
-.p-title .voice { font-family: var(--f-display); font-style: italic; font-size: var(--s-lg); line-height: 1.4; color: var(--ink-soft); border-left: 1px solid var(--gold); padding-left: 1.1rem; max-width: 24rem; }
-.p-body { display: grid; gap: 1.8rem; align-content: start; min-width: 0; }
-.p-body > p:first-child { font-size: 1.125rem; line-height: 1.75; max-width: 40rem; }
-.p-body > p:first-child::first-letter { font-family: var(--f-display); float: left; font-size: 4.3rem; line-height: .82; padding: .35rem .6rem 0 0; color: var(--gold-deep); }
-.p-note { font-size: var(--s-sm); color: var(--ink-soft); max-width: 36rem; }
-.p-cta { display: flex; flex-wrap: wrap; gap: 1.6rem; align-items: center; }
+.p-img { position: relative; margin: 0; aspect-ratio: 4 / 3; overflow: hidden; background: var(--mist); }
+.p-img img { width: 100%; height: 100%; object-fit: cover; }
+.panel.on .p-img img { animation: focus-in 1.1s var(--ease) both; }
+.panel.on .p-body { animation: rise .7s var(--ease) .1s both; }
+@keyframes focus-in { from { transform: scale(1.05); filter: blur(5px); } to { transform: none; filter: none; } }
+.big100 { position: absolute; right: 1.2rem; bottom: -.4rem; font-family: var(--f-display); font-size: clamp(6rem, 4rem + 6vw, 10rem); line-height: .8; color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,.9); pointer-events: none; }
+.p-body { display: grid; gap: 1.3rem; align-content: center; min-width: 0; }
+.p-body .sub { font-size: var(--s-xs); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--gold-deep); }
+.p-body h3 { font-size: clamp(2.2rem, 1.5rem + 2.4vw, 3.4rem); }
+.p-body .lede { font-size: var(--s-lg); line-height: 1.5; color: var(--ink-soft); max-width: 32rem; }
+.p-note { font-size: var(--s-sm); color: var(--ink-soft); }
+.p-cta { display: flex; flex-wrap: wrap; gap: 1.6rem; align-items: center; padding-top: .4rem; }
 
 /* process track inside Career Decision (a real sequence) */
-.track { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding-top: 1.6rem; margin-top: .4rem; }
+.track { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: .8rem; padding-top: 1.4rem; margin-top: .3rem; }
 .track::before, .track::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); }
-.track::after { background: var(--gold); transform-origin: left; transform: scaleX(0); transition: transform 1.6s var(--ease) .2s; }
+.track::after { background: var(--gold); transform-origin: left; transform: scaleX(0); transition: transform 1.6s var(--ease) .3s; }
 .panel.on .track::after { transform: scaleX(1); }
-.track span { position: relative; font-size: var(--s-sm); font-weight: 600; line-height: 1.35; padding-right: .8rem; }
-.track span::before { content: ""; position: absolute; left: 0; top: calc(-1.6rem - 4px); width: 9px; height: 9px; border-radius: 50%; background: var(--paper); border: 1px solid var(--gold); }
-.track span i { display: block; font-style: normal; font-weight: 400; color: var(--ink-soft); font-size: var(--s-xs); }
-.big100 { position: absolute; right: -1rem; top: -2.5rem; font-family: var(--f-display); font-size: clamp(7rem, 5rem + 8vw, 13rem); line-height: .8; color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--gold) 32%, transparent); pointer-events: none; z-index: -1; }
+.track span { position: relative; font-size: var(--s-sm); font-weight: 600; line-height: 1.3; padding-right: .5rem; }
+.track span::before { content: ""; position: absolute; left: 0; top: calc(-1.4rem - 4px); width: 9px; height: 9px; border-radius: 50%; background: var(--paper); border: 1px solid var(--gold); }
 
 @media (max-width: 860px) {
   .selector { display: none; }
-  .panels { border-top: 0; min-height: 0; }
-  .panel, .panel:not(.on) { display: grid; grid-template-columns: 1fr; gap: 1.6rem; padding-block: 2.6rem; border-top: 1px solid var(--line); }
-  .panel .p-anim { animation: none !important; }
-  .track { grid-template-columns: 1fr; gap: 1rem; padding: 0 0 0 1.4rem; }
-  .track::before, .track::after { right: auto; bottom: 0; width: 1px; height: auto; }
-  .track::after { transform: none; }
-  .track span::before { left: calc(-1.4rem - 4px); top: .3rem; }
-  .big100 { font-size: 7rem; top: 0; }
+  .panels { border-top: 0; }
+  .panel, .panel:not(.on) { display: grid; grid-template-columns: 1fr; gap: 1.4rem; padding-block: 2.2rem; border-top: 1px solid var(--line); }
+  .panel .p-img img, .panel .p-body { animation: none !important; }
+  .p-img { aspect-ratio: 16 / 10; }
+  .track { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1.8rem; }
 }
 
 /* HOGAN */
@@ -210,6 +206,7 @@ section { scroll-margin-top: 84px; }
 .test-intro { display: grid; gap: 1.4rem; position: sticky; top: 120px; }
 .test-intro h2 { font-size: var(--s-xl); }
 .test-intro p { color: var(--ink-soft); max-width: 26rem; }
+.test-intro img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 60% 30%; margin-top: .6rem; }
 .quiz { background: var(--paper); padding: clamp(1.6rem, 4vw, 3.2rem); min-height: 30rem; display: grid; align-content: start; gap: 1.6rem; min-width: 0; box-shadow: 14px 14px 0 -1px var(--mist), 14px 14px 0 0 var(--gold); }
 .quiz-top { display: flex; justify-content: space-between; gap: 1rem; font-size: var(--s-xs); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 .quiz-top b { font-weight: 600; color: var(--ink); }
@@ -231,28 +228,30 @@ section { scroll-margin-top: 84px; }
 .result p { color: var(--ink-soft); }
 .result .fit b { color: var(--ink); font-weight: 600; }
 .result .actions { display: flex; flex-wrap: wrap; gap: 1.4rem; align-items: center; margin-top: .4rem; }
-@media (max-width: 860px) { .test { grid-template-columns: 1fr; } .test-intro { position: static; } .quiz { min-height: 0; box-shadow: 8px 8px 0 -1px var(--mist), 8px 8px 0 0 var(--gold); } }
+@media (max-width: 860px) { .test { grid-template-columns: 1fr; } .test-intro { position: static; } .test-intro img { display: none; } .quiz { min-height: 0; box-shadow: 8px 8px 0 -1px var(--mist), 8px 8px 0 0 var(--gold); } }
 
-/* STIMMEN, staggered like a magazine spread */
-.voices { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); row-gap: clamp(3rem, 6vw, 5rem); }
-.q { margin: 0; display: grid; gap: 1.2rem; }
+/* STIMMEN: photo + quotes */
+.voices { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 2.5rem clamp(2.5rem, 6vw, 5.5rem); align-items: center; }
+.voices-img { margin: 0; }
+.voices-img img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.voices-list { display: grid; gap: 2.2rem; min-width: 0; }
+.q { margin: 0; display: grid; gap: 1rem; }
 .q blockquote { margin: 0; font-family: var(--f-display); color: var(--on-ink); line-height: 1.3; }
 .q figcaption { font-size: var(--s-sm); color: var(--on-ink-soft); display: flex; gap: .8rem; align-items: center; }
-.q figcaption::before { content: ""; width: 32px; height: 1px; background: var(--gold-light); }
+.q figcaption::before { content: ""; width: 28px; height: 1px; background: var(--gold-light); }
 .q figcaption b { color: var(--on-ink); font-weight: 600; }
-.q1 { grid-column: 1 / span 9; }
-.q1 blockquote { font-size: clamp(1.8rem, 1.2rem + 2.4vw, 3.1rem); }
+.q1 blockquote { font-size: clamp(1.6rem, 1.1rem + 1.8vw, 2.5rem); }
 .q1 blockquote::before { content: "\201E"; display: block; font-size: 1.6em; line-height: .5; color: var(--gold-light); }
-.q2 { grid-column: 7 / span 6; }
-.q3 { grid-column: 2 / span 6; }
-.q2 blockquote, .q3 blockquote { font-size: clamp(1.3rem, 1.1rem + .8vw, 1.75rem); font-style: italic; }
-@media (max-width: 860px) { .q1, .q2, .q3 { grid-column: 1 / -1; } }
+.q-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding-top: 2rem; border-top: 1px solid var(--on-ink-line); }
+.q-row blockquote { font-size: 1.2rem; font-style: italic; }
+@media (max-width: 860px) { .voices { grid-template-columns: 1fr; } .voices-img img { aspect-ratio: 16 / 10; } .q-row { grid-template-columns: 1fr; } }
 
 /* ÜBER SORNIZA */
 .about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3rem 6rem; align-items: center; }
-.about-fig { position: relative; margin: 0 1.6rem 1.6rem 0; }
-.about-fig::before { content: ""; position: absolute; inset: 1.6rem -1.6rem -1.6rem 1.6rem; border: 1px solid var(--gold); pointer-events: none; }
-.about-fig img { position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; }
+.about-fig { position: relative; margin: 0 3rem 3rem 0; }
+.about-fig img.main { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; }
+.about-fig img.small { position: absolute; right: -3rem; bottom: -3rem; width: 44%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 20%; border: 6px solid var(--paper); }
+.about-fig::after { content: ""; position: absolute; left: -1.2rem; top: 2rem; width: 1px; height: 40%; background: var(--gold); }
 .about-copy { display: grid; gap: 1.5rem; }
 .about-copy h2 { font-size: var(--s-xl); }
 .about-copy p { color: var(--ink-soft); max-width: 36rem; }
@@ -261,13 +260,17 @@ section { scroll-margin-top: 84px; }
 .sign { display: grid; gap: .1rem; margin-top: .4rem; }
 .sign .hand { font-family: var(--f-hand); font-size: 3.4rem; line-height: 1; color: var(--gold-deep); }
 .sign small { font-size: var(--s-xs); color: var(--ink-soft); letter-spacing: .04em; }
-@media (max-width: 860px) { .about { grid-template-columns: 1fr; } .about-fig { max-width: 26rem; } }
+@media (max-width: 860px) { .about { grid-template-columns: 1fr; } .about-fig { max-width: 24rem; margin: 0 2rem 2rem 0; } .about-fig img.small { right: -2rem; bottom: -2rem; } .about-fig::after { display: none; } }
 
 /* ANFRAGE */
 .contact { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3rem 5rem; align-items: start; }
 .contact-intro { display: grid; gap: 1.5rem; }
 .contact-intro h2 { font-size: var(--s-2xl); }
 .contact-intro p { color: var(--on-ink-soft); max-width: 26rem; font-size: var(--s-lg); line-height: 1.5; }
+.me { display: flex; gap: 1rem; align-items: center; }
+.me img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; object-position: 50% 25%; border: 1px solid var(--gold-light); }
+.me span { font-size: var(--s-sm); color: var(--on-ink-soft); line-height: 1.4; }
+.me b { display: block; color: var(--on-ink); font-family: var(--f-display); font-weight: 400; font-size: 1.25rem; }
 .contact-intro .alt { font-size: var(--s-sm); color: var(--on-ink-soft); display: grid; gap: .6rem; padding-top: 1.4rem; border-top: 1px solid var(--on-ink-line); }
 .contact-intro .alt a { color: var(--on-ink); }
 .contact-intro .alt .mail { color: var(--on-ink); font-weight: 600; user-select: all; }
@@ -350,7 +353,7 @@ footer a:hover { color: var(--gold-deep); }
     </svg>
     <div class="hero-copy">
       <h1 id="h-hero"><span class="line">Dein nächster Schritt</span> <span class="line">verdient eine</span> <span class="line"><em>klare</em> Entscheidung.</span></h1>
-      <p class="lead">Für Fach- und Führungskräfte an einem beruflichen Wendepunkt. <b>Psychologisch fundiert, ehrlich im Feedback</b> und mit einem Plan, der wirklich zu dir passt.</p>
+      <p class="lead"><b>Karriere- und Leadership-Coaching</b> für Fach- und Führungskräfte vor einem Jobwechsel, einer neuen Rolle oder einem Neustart.</p>
       <div class="hero-ctas">
         <a class="btn btn-gold" href="#anfrage">Unverbindliches Erstgespräch <span class="arrow" aria-hidden="true">→</span></a>
         <a class="btn btn-line" href="#selbsttest">Welcher Weg passt zu mir?</a>
@@ -371,7 +374,7 @@ footer a:hover { color: var(--gold-deep); }
         <p class="kicker">Jede Karriere hat Wendepunkte.</p>
         <h2 id="h-wege">An welchem stehst du <span class="g">gerade</span>?</h2>
       </div>
-      <p>Wähle den Moment, der sich nach dir anfühlt. Für jeden gibt es eine eigene Begleitung mit klarem Ziel.</p>
+      <p>Wähle deinen Moment und sieh, wie ich dich begleite.</p>
     </div>
 
     <div class="selector" role="tablist" aria-label="Wendepunkte">
@@ -387,60 +390,47 @@ footer a:hover { color: var(--gold-deep); }
 
     <div class="panels">
       <article class="panel on" id="p-decision" role="tabpanel">
-        <div class="p-title p-anim">
+        <figure class="p-img"><img src="assets/o-decision.jpg" alt="Mann steht nachdenklich am Fenster" width="1200" height="800" loading="lazy"></figure>
+        <div class="p-body">
           <span class="sub">Karriereorientierung</span>
           <h3>Executive Career Decision</h3>
-          <p class="voice">„Ich will etwas ändern, weiß aber nicht, was passt.“</p>
-        </div>
-        <div class="p-body p-anim">
-          <p>Du spürst seit einer Weile, dass sich etwas ändern muss. Nur wohin, ist offen. Wir beginnen mit einer fundierten Analyse über die Hogan Assessments und mit reflexiven Sitzungen, in denen wir per Life-Line-Interview und CV-Analyse auf deinen bisherigen Weg schauen. Im Strategie-Call legen wir beides übereinander und schärfen deine Positionierung. Daraus entsteht eine Bewerbungsstrategie, die zu dir passt.</p>
+          <p class="lede">Du willst wechseln, weißt aber nicht wohin. Am Ende steht eine Positionierung, hinter der du stehst.</p>
           <div class="track" aria-label="Ablauf">
-            <span>Analyse<i>Hogan Assessments</i></span>
-            <span>Reflexion<i>Life Line &amp; CV</i></span>
-            <span>Strategie<i>Auswertung &amp; Call</i></span>
-            <span>Positionierung<i>klar formuliert</i></span>
-            <span>Bewerbung<i>deine Strategie</i></span>
+            <span>Analyse</span><span>Reflexion</span><span>Strategie</span><span>Positionierung</span><span>Bewerbung</span>
           </div>
-          <p class="p-note">Auf Wunsch optimieren wir zum Schluss deinen CV, dein LinkedIn- und XING-Profil und deine Netzwerkstrategie.</p>
-          <div class="p-cta"><a class="btn btn-solid" href="#anfrage" data-topic="Executive Career Decision">Erstgespräch zu diesem Weg <span class="arrow" aria-hidden="true">→</span></a></div>
+          <p class="p-note">Optional: CV, LinkedIn, XING und Netzwerk.</p>
+          <div class="p-cta"><a class="btn btn-solid" href="#anfrage" data-topic="Executive Career Decision">Erstgespräch anfragen <span class="arrow" aria-hidden="true">→</span></a></div>
         </div>
       </article>
 
       <article class="panel" id="p-neustart" role="tabpanel">
-        <div class="p-title p-anim">
+        <figure class="p-img"><img src="assets/o-neustart.jpg" alt="Handschlag zum Abschluss eines Vertrags" width="1200" height="800" loading="lazy"></figure>
+        <div class="p-body">
           <span class="sub">Outplacement &amp; Neuorientierung</span>
           <h3>Neustart</h3>
-          <p class="voice">„Mein Job endet. Und jetzt?“</p>
-        </div>
-        <div class="p-body p-anim">
-          <p>Ein Jobverlust fühlt sich selten nach Chance an. Und doch ist er oft der Moment, in dem Menschen zum ersten Mal ehrlich fragen, was sie eigentlich wollen. Wir sortieren gemeinsam deine Lage, finden eine neue Zielrichtung und bauen Bewerbung, Profil und Netzwerk so auf, dass deine Neuorientierung schnell und mit Selbstvertrauen gelingt.</p>
-          <p class="p-note">Ob dein Arbeitgeber die Begleitung übernimmt oder du sie privat buchst: Was wir besprechen, bleibt zwischen uns.</p>
-          <div class="p-cta"><a class="btn btn-solid" href="#anfrage" data-topic="Neustart (Outplacement)">Erstgespräch zu diesem Weg <span class="arrow" aria-hidden="true">→</span></a></div>
+          <p class="lede">Dein Job endet. Wir finden deine neue Richtung und bringen Bewerbung, Profil und Netzwerk auf Kurs.</p>
+          <p class="p-note">Privat gebucht oder vom Arbeitgeber bezahlt, immer vertraulich.</p>
+          <div class="p-cta"><a class="btn btn-solid" href="#anfrage" data-topic="Neustart (Outplacement)">Erstgespräch anfragen <span class="arrow" aria-hidden="true">→</span></a></div>
         </div>
       </article>
 
       <article class="panel" id="p-100" role="tabpanel">
-        <div class="p-title p-anim">
-          <span class="big100" aria-hidden="true">100</span>
+        <figure class="p-img"><img src="assets/o-100.jpg" alt="Führungskraft mit Tablet vor ihrem Team" width="1200" height="800" loading="lazy"><span class="big100" aria-hidden="true">100</span></figure>
+        <div class="p-body">
           <span class="sub">Onboarding in die Führungsrolle</span>
           <h3>Die ersten 100&nbsp;Tage</h3>
-          <p class="voice">„Ich habe zugesagt. Jetzt muss es sitzen.“</p>
-        </div>
-        <div class="p-body p-anim">
-          <p>Der Vertrag ist unterschrieben. In den nächsten Monaten entscheidet sich, ob du in der neuen Rolle wirklich ankommst. Wir bereiten deinen Start vor, klären die Erwartungen an dich, planen, wen du früh kennenlernen solltest, und spielen deine ersten Entscheidungen durch, bevor du sie triffst. Damit du nach der Probezeit fest im Sattel sitzt.</p>
-          <div class="p-cta"><a class="btn btn-solid" href="#anfrage" data-topic="Die ersten 100 Tage">Erstgespräch zu diesem Weg <span class="arrow" aria-hidden="true">→</span></a></div>
+          <p class="lede">Neue Rolle, neue Erwartungen. Wir bereiten deinen Start vor und begleiten dich sicher durch die Probezeit.</p>
+          <div class="p-cta"><a class="btn btn-solid" href="#anfrage" data-topic="Die ersten 100 Tage">Erstgespräch anfragen <span class="arrow" aria-hidden="true">→</span></a></div>
         </div>
       </article>
 
       <article class="panel" id="p-leadership" role="tabpanel">
-        <div class="p-title p-anim">
+        <figure class="p-img"><img src="assets/o-leadership.jpg" alt="Führungskraft präsentiert vor ihrem Team" width="1200" height="874" loading="lazy"></figure>
+        <div class="p-body">
           <span class="sub">Leadership-Coaching</span>
           <h3>Leadership Presence</h3>
-          <p class="voice">„Ich führe und will es besser können.“</p>
-        </div>
-        <div class="p-body p-anim">
-          <p>Du führst ein Team und weißt genau, wo es hakt: in Gesprächen, die anders laufen als geplant, in Wochen ohne Luft, in Momenten, in denen du präsenter wirken willst. Genau an diesen Situationen arbeiten wir, an deiner Kommunikation, deinem Selbstmanagement, deinem Umgang mit Stress und an der Präsenz, mit der du einen Raum betrittst.</p>
-          <div class="p-cta"><a class="btn btn-solid" href="#anfrage" data-topic="Leadership Presence">Erstgespräch zu diesem Weg <span class="arrow" aria-hidden="true">→</span></a></div>
+          <p class="lede">Mehr Wirkung und mehr Ruhe im Führungsalltag. Wir arbeiten an Kommunikation, Selbstmanagement, Stress und Präsenz.</p>
+          <div class="p-cta"><a class="btn btn-solid" href="#anfrage" data-topic="Leadership Presence">Erstgespräch anfragen <span class="arrow" aria-hidden="true">→</span></a></div>
         </div>
       </article>
     </div>
@@ -452,11 +442,10 @@ footer a:hover { color: var(--gold-deep); }
   <div class="wrap hogan">
     <div class="hogan-copy">
       <p class="kicker">Die Grundlage</p>
-      <h2 id="h-hogan">Entscheidungen auf <span class="g">Daten</span> gebaut, nicht auf Vermutungen.</h2>
-      <p>Die Hogan Assessments gehören international zu den am besten validierten Persönlichkeitsverfahren im Berufsleben. Drei Perspektiven zeigen, <b>wie du an guten Tagen wirkst</b>, <b>was unter Druck mit dir passiert</b> und <b>was dich im Kern antreibt</b>.</p>
-      <p>Erst wo sich die drei überschneiden, wird sichtbar, welche Rolle wirklich zu dir passt. Die Ergebnisse besprechen wir ausführlich und übersetzen sie in deine Strategie.</p>
+      <h2 id="h-hogan">Entscheidungen auf <span class="g">Daten</span> gebaut.</h2>
+      <p>Die Hogan Assessments sind international validierte Persönlichkeitsverfahren. Sie zeigen <b>wie du wirkst</b>, <b>was unter Druck passiert</b> und <b>was dich antreibt</b>. Wo sich alle drei treffen, liegt die Rolle, die zu dir passt.</p>
     </div>
-    <svg class="venn reveal" viewBox="0 0 520 470" role="img" aria-label="Drei Hogan-Verfahren: HPI für deine Wirkung, HDS für dein Verhalten unter Druck, MVPI für deine Werte und Motive. In der Mitte: deine Klarheit.">
+<svg class="venn reveal" viewBox="0 0 520 470" role="img" aria-label="Drei Hogan-Verfahren: HPI für deine Wirkung, HDS für dein Verhalten unter Druck, MVPI für deine Werte und Motive. In der Mitte: deine Klarheit.">
       <g><circle class="c" cx="190" cy="180" r="140"/><text class="ab" x="122" y="142" text-anchor="middle">HPI</text><text class="lb" x="122" y="166" text-anchor="middle">Wie du wirkst</text></g>
       <g><circle class="c" cx="330" cy="180" r="140"/><text class="ab" x="398" y="142" text-anchor="middle">HDS</text><text class="lb" x="398" y="166" text-anchor="middle">Verhalten unter Druck</text></g>
       <g><circle class="c" cx="260" cy="300" r="140"/><text class="ab" x="260" y="388" text-anchor="middle">MVPI</text><text class="lb" x="260" y="412" text-anchor="middle">Was dich antreibt</text></g>
@@ -472,7 +461,8 @@ footer a:hover { color: var(--gold-deep); }
     <div class="test-intro">
       <p class="kicker">Selbsttest, rund zwei Minuten</p>
       <h2 id="h-test">Welcher Weg passt zu <span class="g">dir</span>?</h2>
-      <p>Fünf Fragen, ehrlich beantwortet. Am Ende siehst du, welche Begleitung zu deiner Situation passt, und kannst direkt ein Gespräch dazu anfragen.</p>
+      <p>Fünf Fragen. Am Ende weißt du, welche Begleitung zu dir passt.</p>
+      <img src="assets/office.jpg" alt="Sorniza Costoff in ihrem Büro" width="1500" height="998" loading="lazy">
     </div>
     <div class="quiz" id="quiz" aria-live="polite"></div>
   </div>
@@ -483,18 +473,23 @@ footer a:hover { color: var(--gold-deep); }
   <div class="wrap">
     <h2 id="h-voices" class="kicker" style="margin-bottom:clamp(2rem,5vw,3.5rem)">Was Klientinnen und Klienten erzählen</h2>
     <div class="voices">
-      <figure class="q q1 reveal">
-        <blockquote>Sorniza hat mich beim Wechsel in eine neue Branche begleitet. Heute bin ich erfolgreich als Gesamtverkaufsleiter einer Bäckereikette tätig.</blockquote>
-        <figcaption><span><b>J. Jätz</b>, Gesamtverkaufsleiter</span></figcaption>
-      </figure>
-      <figure class="q q2 reveal">
-        <blockquote>Die Vorbereitung auf meine Gehaltsverhandlung hat mir geholfen, meinen Wert für das Unternehmen höher einzuschätzen.</blockquote>
-        <figcaption><span><b>M. Czech</b>, Teamleiter IT</span></figcaption>
-      </figure>
-      <figure class="q q3 reveal">
-        <blockquote>Seit Jahren ist Sorniza meine Sparringspartnerin, in personellen Krisen genauso wie in Höhepunkten.</blockquote>
-        <figcaption><span><b>D. Toschmakov</b>, Geschäftsführerin</span></figcaption>
-      </figure>
+      <figure class="voices-img reveal"><img src="assets/voices.jpg" alt="Coaching-Gespräch am Tisch" width="900" height="1352" loading="lazy"></figure>
+      <div class="voices-list">
+        <figure class="q q1 reveal">
+          <blockquote>Sorniza hat mich beim Wechsel in eine neue Branche begleitet. Heute bin ich Gesamtverkaufsleiter einer Bäckereikette.</blockquote>
+          <figcaption><span><b>J. Jätz</b>, Gesamtverkaufsleiter</span></figcaption>
+        </figure>
+        <div class="q-row">
+          <figure class="q reveal">
+            <blockquote>Die Vorbereitung auf meine Gehaltsverhandlung hat mir geholfen, meinen Wert höher einzuschätzen.</blockquote>
+            <figcaption><span><b>M. Czech</b>, Teamleiter IT</span></figcaption>
+          </figure>
+          <figure class="q reveal">
+            <blockquote>Seit Jahren meine Sparringspartnerin, in Krisen genauso wie in Höhepunkten.</blockquote>
+            <figcaption><span><b>D. Toschmakov</b>, Geschäftsführerin</span></figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -503,14 +498,14 @@ footer a:hover { color: var(--gold-deep); }
 <section class="sec" id="sorniza" aria-labelledby="h-about">
   <div class="wrap about">
     <figure class="about-fig reveal">
-      <img src="assets/portrait.jpg" alt="Porträt von Sorniza Costoff" width="1100" height="1414" loading="lazy">
+      <img class="main" src="assets/portrait.jpg" alt="Porträt von Sorniza Costoff" width="1100" height="1414" loading="lazy">
+      <img class="small" src="assets/about-small.jpg" alt="" width="600" height="900" loading="lazy">
     </figure>
     <div class="about-copy">
       <p class="kicker">Über mich</p>
       <h2 id="h-about">Ich kenne beide Seiten des <span class="g">Tisches</span>.</h2>
-      <p>Ich bin Psychologin und habe <b>über 15 Jahre in der Unternehmensberatung</b> gearbeitet, mit Schwerpunkt auf Führungskräften und Veränderungsprozessen. Ich weiß, wie Unternehmen auf Kandidatinnen und Führungskräfte schauen. Und ich weiß, welche Fragen sich Menschen stellen, wenn ihre Karriere an einem Wendepunkt steht.</p>
-      <p class="pull">Gute Entscheidungen entstehen, wenn du dich selbst klar siehst. Dabei helfe ich dir mit fairem Feedback und echtem Interesse an deinem Weg.</p>
-      <p>Ich arbeite wertschätzend und ganzheitlich, aber immer mit Blick auf ein Ergebnis. Du bekommst von mir eine ehrliche Einschätzung und einen Plan, den du umsetzen kannst.</p>
+      <p>Psychologin mit <b>über 15 Jahren Erfahrung in der Unternehmensberatung</b>. Ich weiß, wie Unternehmen auf Führungskräfte schauen, und welche Fragen du dir an einem Wendepunkt stellst.</p>
+      <p class="pull">Gute Entscheidungen entstehen, wenn du dich selbst klar siehst.</p>
       <div class="sign">
         <span class="hand" aria-hidden="true">Sorniza Costoff</span>
         <small>Gründerin, Costoff Clarity &amp; Change · Berlin</small>
@@ -524,7 +519,8 @@ footer a:hover { color: var(--gold-deep); }
   <div class="wrap contact">
     <div class="contact-intro">
       <h2 id="h-contact">Lass uns <span class="g">sprechen</span>.</h2>
-      <p>Schreib mir ein paar Zeilen zu deiner Situation. Danach nehmen wir uns 30 Minuten für ein erstes, unverbindliches Gespräch, und du weißt, ob und wie ich dich begleiten kann.</p>
+      <p>30 Minuten, unverbindlich. Danach weißt du, ob und wie ich dich begleiten kann.</p>
+      <div class="me"><img src="assets/contact.jpg" alt="Sorniza Costoff" width="600" height="600" loading="lazy"><span><b>Sorniza Costoff</b>Du sprichst direkt mit mir.</span></div>
       <div class="alt">
         <span>Lieber direkt einen Termin wählen? <a class="tlink" href="https://calendly.com/contact-costoff/30min" target="_blank" rel="noopener">Zum Kalender ↗</a></span>
         <span>Oder per E-Mail: <span class="mail">contact@costoff.de</span></span>
