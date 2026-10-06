@@ -43,14 +43,14 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 main { overflow-x: clip; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
-h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: 1.04; margin: 0; text-wrap: balance; letter-spacing: -.012em; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 500; line-height: 1.04; margin: 0; text-wrap: balance; letter-spacing: -.012em; }
 p { margin: 0; }
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
 .g { font-style: italic; color: var(--gold-deep); }
 .ink { background: var(--ink); color: var(--on-ink); }
 .ink .g { color: var(--gold-light); }
-.kicker { font-family: var(--f-display); font-style: italic; font-size: 1.15rem; color: var(--gold-deep); }
+.kicker { font-family: var(--f-display); font-style: italic; font-weight: 500; font-size: 1.15rem; color: var(--gold-deep); }
 .ink .kicker { color: var(--gold-light); }
 
 /* Buttons */
@@ -87,8 +87,8 @@ p { margin: 0; }
 /* HERO: ink plane + photo plane, text never sits on the photo */
 .hero { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); min-height: min(86vh, 820px); }
 .hero-plane { position: relative; display: grid; align-content: center; padding: clamp(3.5rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem) clamp(3rem, 6vw, 5rem) max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter))); overflow: hidden; }
-.hero-plane svg { position: absolute; right: -30%; top: 50%; translate: 0 -50%; height: 135%; width: auto; pointer-events: none; }
-.hero-plane .arc.b { stroke: var(--on-ink); opacity: .1; }
+.hero .mark { width: 48px; overflow: visible; height: 48px; margin-bottom: -.4rem; }
+.hero .mark .arc { stroke: var(--gold-light); stroke-width: 1.5; }
 .hero-copy { position: relative; display: grid; gap: 2rem; max-width: 40rem; }
 .hero h1 { font-size: var(--s-2xl); color: var(--on-ink); }
 .hero h1 .line { display: inline-block; }
@@ -98,14 +98,11 @@ p { margin: 0; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
 .hero-photo { position: relative; margin: 0; background: #C0C5C8; overflow: hidden; }
 .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 84% 28%; }
-.hero-photo figcaption { position: absolute; left: 1.3rem; bottom: 1.6rem; writing-mode: vertical-rl; transform: rotate(180deg); font-size: var(--s-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--ink); font-weight: 600; }
-.hero-photo figcaption span { color: var(--gold-deep); }
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; min-height: 0; }
   .hero-plane { padding: 3.2rem var(--gutter) 3rem; }
-  .hero-plane svg { right: -60%; height: 120%; opacity: .45; }
-  .hero-photo { aspect-ratio: 4 / 3; max-width: 100%; }
-  .hero-photo img { object-position: 86% 22%; }
+  .hero-photo { aspect-ratio: 1 / 1; max-height: 70vh; width: 100%; }
+  .hero-photo img { object-position: 82% 0%; }
 }
 .arc { fill: none; stroke: var(--gold); stroke-width: 1; vector-effect: non-scaling-stroke; }
 
@@ -114,9 +111,9 @@ p { margin: 0; }
   .hero h1 .line:nth-child(2) { animation-delay: .18s; }
   .hero h1 .line:nth-child(3) { animation-delay: .36s; }
   .hero .lead, .hero-ctas { animation: rise 1s var(--ease) .7s both; }
-  .hero-plane .arc { stroke-dasharray: 2400; stroke-dashoffset: 2400; animation: draw 3s var(--ease) .2s forwards; }
-  .hero-plane .arc:nth-child(2) { animation-delay: .4s; }
-  .hero-plane .arc:nth-child(3) { animation-delay: .6s; }
+  .hero .mark .arc { stroke-dasharray: 100; stroke-dashoffset: 100; animation: draw 1.6s var(--ease) .2s forwards; }
+  .hero .mark .arc:nth-child(2) { animation-delay: .35s; }
+  .hero .mark .arc:nth-child(3) { animation-delay: .5s; }
   .hero-photo img { animation: settle 2.2s var(--ease) both; }
 }
 @keyframes clarity { from { filter: blur(14px); opacity: .25; letter-spacing: .02em; } to { filter: blur(0); opacity: 1; letter-spacing: -.012em; } }
@@ -145,7 +142,7 @@ section { scroll-margin-top: 84px; }
 .stop:nth-of-type(3) .pin { top: calc(159px - 180px - 9px); }  .stop:nth-of-type(3)::before { height: 0; }
 .stop:nth-of-type(4) .pin { top: calc(61px - 180px - 9px); }   .stop:nth-of-type(4)::before { height: 94px; }
 .stop .when { font-size: var(--s-xs); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); transition: color .3s; }
-.stop .say { font-family: var(--f-display); font-size: 1.25rem; line-height: 1.28; color: var(--ink-soft); transition: color .3s; }
+.stop .say { font-family: var(--f-display); font-weight: 500; font-size: 1.2rem; line-height: 1.28; color: var(--ink-soft); transition: color .3s; }
 .stop:hover .say, .stop:hover .when { color: var(--ink); }
 .stop:hover .pin { transform: scale(1.15); }
 .stop[aria-selected="true"] .pin { background: var(--gold); transform: scale(1.3); box-shadow: 0 0 0 7px color-mix(in srgb, var(--gold) 18%, transparent); }
@@ -161,7 +158,6 @@ section { scroll-margin-top: 84px; }
 .panel.on .p-img img { animation: focus-in 1.1s var(--ease) both; }
 .panel.on .p-body { animation: rise .7s var(--ease) .1s both; }
 @keyframes focus-in { from { transform: scale(1.05); filter: blur(5px); } to { transform: none; filter: none; } }
-.big100 { position: absolute; right: 1.2rem; bottom: -.4rem; font-family: var(--f-display); font-size: clamp(6rem, 4rem + 6vw, 10rem); line-height: .8; color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,.9); pointer-events: none; }
 .p-body { display: grid; gap: 1.3rem; align-content: center; min-width: 0; }
 .p-body .sub { font-size: var(--s-xs); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--gold-deep); }
 .p-body h3 { font-size: clamp(2.2rem, 1.5rem + 2.4vw, 3.4rem); }
@@ -170,12 +166,19 @@ section { scroll-margin-top: 84px; }
 .p-cta { display: flex; flex-wrap: wrap; gap: 1.6rem; align-items: center; padding-top: .4rem; }
 
 /* process track inside Career Decision (a real sequence) */
-.track { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: .8rem; padding-top: 1.4rem; margin-top: .3rem; }
+.track { position: relative; display: flex; justify-content: space-between; gap: 1rem; padding-top: 1.4rem; margin-top: .3rem; }
 .track::before, .track::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); }
 .track::after { background: var(--gold); transform-origin: left; transform: scaleX(0); transition: transform 1.6s var(--ease) .3s; }
 .panel.on .track::after { transform: scaleX(1); }
-.track span { position: relative; font-size: var(--s-sm); font-weight: 600; line-height: 1.3; padding-right: .5rem; }
+.track span { position: relative; font-size: var(--s-sm); font-weight: 600; line-height: 1.3; white-space: nowrap; }
 .track span::before { content: ""; position: absolute; left: 0; top: calc(-1.4rem - 4px); width: 9px; height: 9px; border-radius: 50%; background: var(--paper); border: 1px solid var(--gold); }
+
+@media (max-width: 1100px) {
+  .track { flex-wrap: wrap; justify-content: flex-start; gap: .5rem 1.4rem; padding-top: 0; }
+  .track::before, .track::after { display: none; }
+  .track span { padding-left: 1rem; }
+  .track span::before { top: .45em; }
+}
 
 @media (max-width: 860px) {
   .selector { display: none; }
@@ -183,7 +186,6 @@ section { scroll-margin-top: 84px; }
   .panel, .panel:not(.on) { display: grid; grid-template-columns: 1fr; gap: 1.4rem; padding-block: 2.2rem; border-top: 1px solid var(--line); }
   .panel .p-img img, .panel .p-body { animation: none !important; }
   .p-img { aspect-ratio: 16 / 10; }
-  .track { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1.8rem; }
 }
 
 /* HOGAN */
@@ -207,7 +209,7 @@ section { scroll-margin-top: 84px; }
 .test-intro h2 { font-size: var(--s-xl); }
 .test-intro p { color: var(--ink-soft); max-width: 26rem; }
 .test-intro img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 60% 30%; margin-top: .6rem; }
-.quiz { background: var(--paper); padding: clamp(1.6rem, 4vw, 3.2rem); min-height: 30rem; display: grid; align-content: start; gap: 1.6rem; min-width: 0; box-shadow: 14px 14px 0 -1px var(--mist), 14px 14px 0 0 var(--gold); }
+.quiz { background: var(--paper); padding: clamp(1.6rem, 4vw, 3.2rem); min-height: 30rem; display: grid; align-content: start; gap: 1.6rem; min-width: 0; }
 .quiz-top { display: flex; justify-content: space-between; gap: 1rem; font-size: var(--s-xs); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 .quiz-top b { font-weight: 600; color: var(--ink); }
 .bar { height: 1px; background: var(--line); position: relative; }
@@ -228,7 +230,7 @@ section { scroll-margin-top: 84px; }
 .result p { color: var(--ink-soft); }
 .result .fit b { color: var(--ink); font-weight: 600; }
 .result .actions { display: flex; flex-wrap: wrap; gap: 1.4rem; align-items: center; margin-top: .4rem; }
-@media (max-width: 860px) { .test { grid-template-columns: 1fr; } .test-intro { position: static; } .test-intro img { display: none; } .quiz { min-height: 0; box-shadow: 8px 8px 0 -1px var(--mist), 8px 8px 0 0 var(--gold); } }
+@media (max-width: 860px) { .test { grid-template-columns: 1fr; } .test-intro { position: static; } .test-intro img { display: none; } .quiz { min-height: 0; } }
 
 /* STIMMEN: photo + quotes */
 .voices { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 2.5rem clamp(2.5rem, 6vw, 5.5rem); align-items: center; }
@@ -236,36 +238,33 @@ section { scroll-margin-top: 84px; }
 .voices-img img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
 .voices-list { display: grid; gap: 2.2rem; min-width: 0; }
 .q { margin: 0; display: grid; gap: 1rem; }
-.q blockquote { margin: 0; font-family: var(--f-display); color: var(--on-ink); line-height: 1.3; }
+.q blockquote { margin: 0; font-family: var(--f-display); font-weight: 500; color: var(--on-ink); line-height: 1.3; }
 .q figcaption { font-size: var(--s-sm); color: var(--on-ink-soft); display: flex; gap: .8rem; align-items: center; }
 .q figcaption::before { content: ""; width: 28px; height: 1px; background: var(--gold-light); }
 .q figcaption b { color: var(--on-ink); font-weight: 600; }
 .q1 blockquote { font-size: clamp(1.6rem, 1.1rem + 1.8vw, 2.5rem); }
-.q1 blockquote::before { content: "\201E"; display: block; font-size: 1.6em; line-height: .5; color: var(--gold-light); }
 .q-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding-top: 2rem; border-top: 1px solid var(--on-ink-line); }
 .q-row blockquote { font-size: 1.2rem; font-style: italic; }
 @media (max-width: 860px) { .voices { grid-template-columns: 1fr; } .voices-img img { aspect-ratio: 16 / 10; } .q-row { grid-template-columns: 1fr; } }
 
 /* ÜBER SORNIZA */
 .about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3rem 6rem; align-items: center; }
-.about-fig { position: relative; margin: 0 3rem 3rem 0; }
+.about-fig { margin: 0; }
 .about-fig img.main { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; }
-.about-fig img.small { position: absolute; right: -3rem; bottom: -3rem; width: 44%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 20%; border: 6px solid var(--paper); }
-.about-fig::after { content: ""; position: absolute; left: -1.2rem; top: 2rem; width: 1px; height: 40%; background: var(--gold); }
 .about-copy { display: grid; gap: 1.5rem; }
 .about-copy h2 { font-size: var(--s-xl); }
 .about-copy p { color: var(--ink-soft); max-width: 36rem; }
 .about-copy p b { color: var(--ink); font-weight: 500; }
-.about-copy .pull { font-family: var(--f-display); font-size: var(--s-lg); line-height: 1.45; color: var(--ink); font-style: italic; max-width: 32rem; }
+.about-copy .pull { font-family: var(--f-display); font-weight: 500; font-size: var(--s-lg); line-height: 1.45; color: var(--ink); font-style: italic; max-width: 32rem; }
 .sign { display: grid; gap: .1rem; margin-top: .4rem; }
 .sign .hand { font-family: var(--f-hand); font-size: 3.4rem; line-height: 1; color: var(--gold-deep); }
 .sign small { font-size: var(--s-xs); color: var(--ink-soft); letter-spacing: .04em; }
-@media (max-width: 860px) { .about { grid-template-columns: 1fr; } .about-fig { max-width: 24rem; margin: 0 2rem 2rem 0; } .about-fig img.small { right: -2rem; bottom: -2rem; } .about-fig::after { display: none; } }
+@media (max-width: 860px) { .about { grid-template-columns: 1fr; } .about-fig { max-width: 26rem; } }
 
 /* ANFRAGE */
 .contact { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3rem 5rem; align-items: start; }
 .contact-intro { display: grid; gap: 1.5rem; }
-.contact-intro h2 { font-size: var(--s-2xl); }
+.contact-intro h2 { font-size: var(--s-xl); margin-top: .6rem; }
 .contact-intro p { color: var(--on-ink-soft); max-width: 26rem; font-size: var(--s-lg); line-height: 1.5; }
 .me { display: flex; gap: 1rem; align-items: center; }
 .me img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; object-position: 50% 25%; border: 1px solid var(--gold-light); }
@@ -275,7 +274,7 @@ section { scroll-margin-top: 84px; }
 .contact-intro .alt a { color: var(--on-ink); }
 .contact-intro .alt .mail { color: var(--on-ink); font-weight: 600; user-select: all; }
 form.req { background: var(--paper); color: var(--ink); padding: clamp(1.6rem, 4vw, 3rem); display: grid; gap: 1.4rem; min-width: 0; }
-form.req h3 { font-size: 1.9rem; }
+form.req h3 { font-size: clamp(1.5rem, 1.3rem + .6vw, 1.8rem); }
 .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
 @media (max-width: 560px) { .row2 { grid-template-columns: 1fr; } }
 .field { display: grid; gap: .3rem; min-width: 0; }
@@ -284,7 +283,7 @@ form.req h3 { font-size: 1.9rem; }
 .field textarea { resize: vertical; min-height: 6.5rem; }
 .field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%), linear-gradient(135deg, var(--ink) 50%, transparent 50%); background-position: calc(100% - 10px) 55%, calc(100% - 5px) 55%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 1.6rem; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-bottom-color: var(--gold); box-shadow: 0 1px 0 var(--gold); }
-.hint { font-family: var(--f-display); font-style: italic; color: var(--gold-deep); }
+.hint { font-size: var(--s-sm); font-weight: 600; color: var(--gold-deep); }
 .consent { display: grid; grid-template-columns: 1.2rem minmax(0, 1fr); gap: .7rem; font-size: var(--s-xs); color: var(--ink-soft); align-items: start; }
 .consent input { margin-top: .2rem; accent-color: var(--ink); }
 .form-foot { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; }
@@ -298,7 +297,7 @@ form.req h3 { font-size: 1.9rem; }
 .faq-wrap h2 { font-size: var(--s-xl); margin-top: .6rem; }
 .faq details { border-top: 1px solid var(--line); }
 .faq details:last-child { border-bottom: 1px solid var(--line); }
-.faq summary { list-style: none; cursor: pointer; padding: 1.4rem 0; display: flex; justify-content: space-between; gap: 1.5rem; font-family: var(--f-display); font-size: 1.35rem; line-height: 1.3; }
+.faq summary { list-style: none; cursor: pointer; padding: 1.3rem 0; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; font-family: var(--f-body); font-weight: 500; font-size: 1.125rem; line-height: 1.4; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after { content: "+"; font-family: var(--f-body); color: var(--gold-deep); font-size: 1.5rem; line-height: 1; transition: transform .3s var(--ease); }
 .faq details[open] summary::after { transform: rotate(45deg); }
@@ -346,12 +345,13 @@ footer a:hover { color: var(--gold-deep); }
 <!-- HERO -->
 <section class="hero ink" aria-labelledby="h-hero">
   <div class="hero-plane">
-    <svg viewBox="0 0 900 900" aria-hidden="true">
-      <path class="arc" d="M640 60 A400 400 0 1 0 640 840"/>
-      <path class="arc b" d="M615 130 A330 330 0 1 0 615 770"/>
-      <path class="arc" d="M590 200 A262 262 0 1 0 590 700"/>
-    </svg>
+    
     <div class="hero-copy">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+      <path class="arc" pathLength="100" d="M50 6 A29 29 0 1 0 50 58"/>
+      <path class="arc" pathLength="100" d="M50 15 A21 21 0 1 0 50 49"/>
+      <path class="arc" pathLength="100" d="M50 24 A12 12 0 1 0 50 40"/>
+    </svg>
       <h1 id="h-hero"><span class="line">Dein nächster Schritt</span> <span class="line">verdient eine</span> <span class="line"><em>klare</em> Entscheidung.</span></h1>
       <p class="lead"><b>Karriere- und Leadership-Coaching</b> für Fach- und Führungskräfte vor einem Jobwechsel, einer neuen Rolle oder einem Neustart.</p>
       <div class="hero-ctas">
@@ -362,7 +362,6 @@ footer a:hover { color: var(--gold-deep); }
   </div>
   <figure class="hero-photo">
     <img src="assets/hero.jpg" alt="Sorniza Costoff" width="2200" height="1185" fetchpriority="high">
-    <figcaption>Sorniza Costoff <span>· Psychologin</span></figcaption>
   </figure>
 </section>
 
@@ -415,7 +414,7 @@ footer a:hover { color: var(--gold-deep); }
       </article>
 
       <article class="panel" id="p-100" role="tabpanel">
-        <figure class="p-img"><img src="assets/o-100.jpg" alt="Führungskraft mit Tablet vor ihrem Team" width="1200" height="800" loading="lazy"><span class="big100" aria-hidden="true">100</span></figure>
+        <figure class="p-img"><img src="assets/o-100.jpg" alt="Führungskraft mit Tablet vor ihrem Team" width="1200" height="800" loading="lazy"></figure>
         <div class="p-body">
           <span class="sub">Onboarding in die Führungsrolle</span>
           <h3>Die ersten 100&nbsp;Tage</h3>
@@ -471,21 +470,21 @@ footer a:hover { color: var(--gold-deep); }
 <!-- STIMMEN -->
 <section class="sec ink" aria-labelledby="h-voices">
   <div class="wrap">
-    <h2 id="h-voices" class="kicker" style="margin-bottom:clamp(2rem,5vw,3.5rem)">Was Klientinnen und Klienten erzählen</h2>
+    <div class="head"><div><p class="kicker">Stimmen</p><h2 id="h-voices">Was Klienten <span class="g">erzählen</span>.</h2></div></div>
     <div class="voices">
       <figure class="voices-img reveal"><img src="assets/voices.jpg" alt="Coaching-Gespräch am Tisch" width="900" height="1352" loading="lazy"></figure>
       <div class="voices-list">
         <figure class="q q1 reveal">
-          <blockquote>Sorniza hat mich beim Wechsel in eine neue Branche begleitet. Heute bin ich Gesamtverkaufsleiter einer Bäckereikette.</blockquote>
+          <blockquote>„Sorniza hat mich beim Wechsel in eine neue Branche begleitet. Heute bin ich Gesamtverkaufsleiter einer Bäckereikette.“</blockquote>
           <figcaption><span><b>J. Jätz</b>, Gesamtverkaufsleiter</span></figcaption>
         </figure>
         <div class="q-row">
           <figure class="q reveal">
-            <blockquote>Die Vorbereitung auf meine Gehaltsverhandlung hat mir geholfen, meinen Wert höher einzuschätzen.</blockquote>
+            <blockquote>„Die Vorbereitung auf meine Gehaltsverhandlung hat mir geholfen, meinen Wert höher einzuschätzen.“</blockquote>
             <figcaption><span><b>M. Czech</b>, Teamleiter IT</span></figcaption>
           </figure>
           <figure class="q reveal">
-            <blockquote>Seit Jahren meine Sparringspartnerin, in Krisen genauso wie in Höhepunkten.</blockquote>
+            <blockquote>„Seit Jahren meine Sparringspartnerin, in Krisen genauso wie in Höhepunkten.“</blockquote>
             <figcaption><span><b>D. Toschmakov</b>, Geschäftsführerin</span></figcaption>
           </figure>
         </div>
@@ -499,7 +498,6 @@ footer a:hover { color: var(--gold-deep); }
   <div class="wrap about">
     <figure class="about-fig reveal">
       <img class="main" src="assets/portrait.jpg" alt="Porträt von Sorniza Costoff" width="1100" height="1414" loading="lazy">
-      <img class="small" src="assets/about-small.jpg" alt="" width="600" height="900" loading="lazy">
     </figure>
     <div class="about-copy">
       <p class="kicker">Über mich</p>
@@ -518,7 +516,7 @@ footer a:hover { color: var(--gold-deep); }
 <section class="sec ink" id="anfrage" aria-labelledby="h-contact">
   <div class="wrap contact">
     <div class="contact-intro">
-      <h2 id="h-contact">Lass uns <span class="g">sprechen</span>.</h2>
+      <div><p class="kicker">Erstgespräch</p><h2 id="h-contact">Lass uns <span class="g">sprechen</span>.</h2></div>
       <p>30 Minuten, unverbindlich. Danach weißt du, ob und wie ich dich begleiten kann.</p>
       <div class="me"><img src="assets/contact.jpg" alt="Sorniza Costoff" width="600" height="600" loading="lazy"><span><b>Sorniza Costoff</b>Du sprichst direkt mit mir.</span></div>
       <div class="alt">
