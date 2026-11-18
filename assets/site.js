@@ -40,34 +40,27 @@
     });
   }
 
-  /* ---------- Wendepunkte: the curve is the tab bar ---------- */
+  /* ---------- Situations: the logo arc is the tab bar ---------- */
   const stops = [...document.querySelectorAll(".stop")];
   const panels = [...document.querySelectorAll(".panel")];
-  const curve = document.getElementById("curve-on");
+  const prog = document.getElementById("arc-prog");
   let select = () => {};
-  if (stops.length && curve) {
-    const len = curve.getTotalLength();
-    const xs = [0, .26, .52, .78];
-    const lenAtX = fx => {
-      let lo = 0, hi = len;
-      for (let k = 0; k < 24; k++) { const m = (lo + hi) / 2; if (curve.getPointAtLength(m).x < fx * 1000) lo = m; else hi = m; }
-      return lo;
-    };
-    const reach = xs.map(x => Math.max(.04, lenAtX(x) / len));
-    curve.style.strokeDasharray = len;
-    curve.style.strokeDashoffset = len * (1 - reach[0]);
+  if (stops.length && prog) {
+    const len = prog.getTotalLength();
+    const reach = stops.map(s => +s.dataset.reach);
+    prog.style.strokeDasharray = len;
+    prog.style.strokeDashoffset = len * (1 - reach[0]);
     select = (i, focus) => {
       stops.forEach((s, j) => { s.setAttribute("aria-selected", j === i); s.tabIndex = j === i ? 0 : -1; });
       panels.forEach((p, j) => p.classList.toggle("on", j === i));
-      curve.style.transition = reduced ? "none" : "stroke-dashoffset .9s cubic-bezier(.2,.7,.2,1)";
-      curve.style.strokeDashoffset = len * (1 - reach[i]);
+      prog.style.strokeDashoffset = len * (1 - reach[i]);
       if (focus) stops[i].focus();
     };
     stops.forEach((s, i) => {
       s.addEventListener("click", () => select(i));
       s.addEventListener("keydown", e => {
-        if (e.key === "ArrowRight") select((i + 1) % stops.length, true);
-        if (e.key === "ArrowLeft") select((i + stops.length - 1) % stops.length, true);
+        if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); select((i + 1) % stops.length, true); }
+        if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); select((i + stops.length - 1) % stops.length, true); }
       });
     });
     select(0);
@@ -188,7 +181,7 @@
     quiz.innerHTML = `${head("Selbsttest", 0)}
       <h3>Sieben Fragen zu deiner beruflichen Situation.</h3>
       <p class="muted">Antworte aus dem Bauch heraus. Es gibt keine richtigen oder falschen Antworten, und deine Antworten bleiben in deinem Browser.</p>
-      <div><button class="btn btn-ink" type="button" id="q-start">Test starten <span class="arrow" aria-hidden="true">→</span></button></div>`;
+      <div><button class="btn" type="button" id="q-start">Test starten <span class="arrow" aria-hidden="true">→</span></button></div>`;
     quiz.querySelector("#q-start").onclick = () => { step = 0; render(); };
   }
   function render() {
@@ -221,10 +214,10 @@
         <h3>${esc(best.name)}</h3>
         <p>${esc(best.text)}</p>
         ${second ? `<p class="fit">Auch Elemente aus <b>${esc(second.name)}</b> könnten für dich eine Rolle spielen. Das klären wir im Erstgespräch.</p>` : ""}
-        <div class="actions">
+        <div class="cta">
           ${none
-            ? `<a class="btn btn-line" href="#anfrage">Trotzdem kurz sprechen</a>`
-            : `<a class="btn btn-ink" href="#anfrage" id="q-cta">Erstgespräch dazu anfragen <span class="arrow" aria-hidden="true">→</span></a>
+            ? `<a class="tlink" href="#anfrage">Trotzdem kurz sprechen</a>`
+            : `<a class="btn" href="#anfrage" id="q-cta">Erstgespräch dazu anfragen <span class="arrow" aria-hidden="true">→</span></a>
                <a class="tlink" href="${best.href}">Mehr zu ${esc(best.name)}</a>`}
         </div>
         <div class="quiz-nav"><button type="button" class="linkbtn" id="q-back">← Letzte Frage ändern</button><button type="button" class="linkbtn" id="q-reset">Neu beginnen</button></div>
