@@ -1,11 +1,10 @@
-# Costoff Clarity & Change – Konzept-Onepager
+# Costoff Clarity & Change – Website
 
-Konzeptentwurf für den Relaunch von costoff.de.
+Statische Website für costoff.de, deployt über GitHub Pages (`.github/workflows/deploy.yml`).
 
-- `index.html` – Onepager als Seitenfragment (Head-Tags und Styles, danach das Markup).
-- `assets/` – Logo und Fotos von der bestehenden Website, für das Web komprimiert.
-- `scripts/build.sh` – baut daraus `_site/` mit vollständigem HTML-Dokument (`noindex`, damit das Konzept nicht mit costoff.de konkurriert).
-- `.github/workflows/deploy.yml` – deployt `_site/` bei jedem Push auf GitHub Pages.
+- `src/` – Seiten als Fragmente (`index`, `leistungen`, `ueber-mich`, `impressum`, `datenschutz`) plus gemeinsame Bausteine (`_head`, `_header`, `_footer`).
+- `assets/` – `site.css`, `site.js`, lokal eingebundene Schriften (`fonts/`) und Bilder.
+- `scripts/build.sh` – baut `_site/` (vollständige HTML-Dokumente, `noindex` bis zum Livegang).
 
 Lokal bauen und ansehen:
 
@@ -14,4 +13,4 @@ Lokal bauen und ansehen:
 python3 -m http.server -d _site 8000
 ```
 
-Paketnamen und Texte sind Vorschläge. Das Anfrageformular ist noch nicht angebunden.
+Formular: In `src/index.html` beim Formular `data-access-key` mit dem Web3Forms-Schlüssel füllen, sobald er vorliegt. Ohne Schlüssel zeigt das Formular einen Hinweis und versendet nichts.
